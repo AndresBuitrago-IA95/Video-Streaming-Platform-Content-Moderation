@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -62,6 +63,15 @@ def make_handler(dash: Dashboard):
 
         def do_GET(self):
             url = urlparse(self.path)
+            if url.path in ("/", "/health"):
+                body = json.dumps({"status": "ok", "service": "content-moderation-api"}).encode("utf-8")
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(body)))
+                self._cors()
+                self.end_headers()
+                self.wfile.write(body)
+                return
             if url.path != "/api/dashboard":
                 self.send_error(404)
                 return
@@ -92,9 +102,10 @@ def main() -> None:
     args = ap.parse_args()
 
     dash = Dashboard(args.refresh, args.rate)
-    if args.serve:
-        print(f"API lista: http://localhost:{args.serve}/api/dashboard", flush=True)
-        ThreadingHTTPServer(("", args.serve), make_handler(dash)).serve_forever()
+    port = args.serve or (int(os.environ["PORT"]) if "PORT" in os.environ else None)
+    if port:
+        print(f"API lista: http://0.0.0.0:{port}/api/dashboard", flush=True)
+        ThreadingHTTPServer(("0.0.0.0", port), make_handler(dash)).serve_forever()
     else:
         print(json.dumps(dash.payload(), ensure_ascii=False, indent=2))
 
