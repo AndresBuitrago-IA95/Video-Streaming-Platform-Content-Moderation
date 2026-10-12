@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --background: #070b17;
+  --foreground: #e2e8f0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 80% 50% at 15% -10%, rgba(139, 92, 246, 0.22), transparent 60%),
+    radial-gradient(ellipse 70% 45% at 95% 0%, rgba(34, 211, 238, 0.15), transparent 60%),
+    var(--background);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Recharts: quitar el contorno al enfocar */
+.recharts-wrapper,
+.recharts-surface {
+  outline: none;
+}

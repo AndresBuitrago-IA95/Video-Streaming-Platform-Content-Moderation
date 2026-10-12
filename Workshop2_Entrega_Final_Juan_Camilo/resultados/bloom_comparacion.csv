@@ -1,0 +1,5 @@
+﻿bits_por_elemento,bits_totales,funciones_hash,usuarios_insertados,negativos_evaluados,falsos_positivos,falsos_negativos,tasa_falsos_positivos_experimental,tasa_falsos_positivos_teorica
+4,3204,3,801,1190,200,0,0.168067,0.146892
+8,6408,6,801,1190,25,0,0.021008,0.021577
+12,9612,8,801,1190,8,0,0.006723,0.003142
+16,12816,11,801,1190,0,0,0.0,0.000459

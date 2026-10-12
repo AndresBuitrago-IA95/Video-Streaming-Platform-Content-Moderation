@@ -1,0 +1,802 @@
+[
+    {
+        "edge_id": "e001",
+        "from_category": "Ciencia",
+        "to_category": "Ciencia",
+        "transition_count": 93,
+        "flagged_frac": 0.0968,
+        "avg_view_count_1h": 2584.76
+    },
+    {
+        "edge_id": "e002",
+        "from_category": "Ciencia",
+        "to_category": "Cocina",
+        "transition_count": 92,
+        "flagged_frac": 0.0978,
+        "avg_view_count_1h": 2585.72
+    },
+    {
+        "edge_id": "e003",
+        "from_category": "Ciencia",
+        "to_category": "Deportes",
+        "transition_count": 84,
+        "flagged_frac": 0.0952,
+        "avg_view_count_1h": 2289.9
+    },
+    {
+        "edge_id": "e004",
+        "from_category": "Ciencia",
+        "to_category": "Educacion",
+        "transition_count": 70,
+        "flagged_frac": 0.0857,
+        "avg_view_count_1h": 2556.13
+    },
+    {
+        "edge_id": "e005",
+        "from_category": "Ciencia",
+        "to_category": "Entretenimiento",
+        "transition_count": 78,
+        "flagged_frac": 0.0769,
+        "avg_view_count_1h": 2789.44
+    },
+    {
+        "edge_id": "e006",
+        "from_category": "Ciencia",
+        "to_category": "Musica",
+        "transition_count": 77,
+        "flagged_frac": 0.1169,
+        "avg_view_count_1h": 2482.3
+    },
+    {
+        "edge_id": "e007",
+        "from_category": "Ciencia",
+        "to_category": "Noticias",
+        "transition_count": 83,
+        "flagged_frac": 0.0843,
+        "avg_view_count_1h": 2446.33
+    },
+    {
+        "edge_id": "e008",
+        "from_category": "Ciencia",
+        "to_category": "Salud",
+        "transition_count": 78,
+        "flagged_frac": 0.0897,
+        "avg_view_count_1h": 2646.64
+    },
+    {
+        "edge_id": "e009",
+        "from_category": "Ciencia",
+        "to_category": "Tecnologia",
+        "transition_count": 72,
+        "flagged_frac": 0.0972,
+        "avg_view_count_1h": 2638.53
+    },
+    {
+        "edge_id": "e010",
+        "from_category": "Ciencia",
+        "to_category": "Videojuegos",
+        "transition_count": 73,
+        "flagged_frac": 0.1507,
+        "avg_view_count_1h": 2357.77
+    },
+    {
+        "edge_id": "e011",
+        "from_category": "Cocina",
+        "to_category": "Ciencia",
+        "transition_count": 78,
+        "flagged_frac": 0.0641,
+        "avg_view_count_1h": 2533.1
+    },
+    {
+        "edge_id": "e012",
+        "from_category": "Cocina",
+        "to_category": "Cocina",
+        "transition_count": 71,
+        "flagged_frac": 0.0986,
+        "avg_view_count_1h": 2519.41
+    },
+    {
+        "edge_id": "e013",
+        "from_category": "Cocina",
+        "to_category": "Deportes",
+        "transition_count": 92,
+        "flagged_frac": 0.0652,
+        "avg_view_count_1h": 2362.97
+    },
+    {
+        "edge_id": "e014",
+        "from_category": "Cocina",
+        "to_category": "Educacion",
+        "transition_count": 70,
+        "flagged_frac": 0.1429,
+        "avg_view_count_1h": 2490.24
+    },
+    {
+        "edge_id": "e015",
+        "from_category": "Cocina",
+        "to_category": "Entretenimiento",
+        "transition_count": 86,
+        "flagged_frac": 0.1163,
+        "avg_view_count_1h": 2549.77
+    },
+    {
+        "edge_id": "e016",
+        "from_category": "Cocina",
+        "to_category": "Musica",
+        "transition_count": 77,
+        "flagged_frac": 0.0909,
+        "avg_view_count_1h": 2283.0
+    },
+    {
+        "edge_id": "e017",
+        "from_category": "Cocina",
+        "to_category": "Noticias",
+        "transition_count": 76,
+        "flagged_frac": 0.0921,
+        "avg_view_count_1h": 2551.86
+    },
+    {
+        "edge_id": "e018",
+        "from_category": "Cocina",
+        "to_category": "Salud",
+        "transition_count": 71,
+        "flagged_frac": 0.169,
+        "avg_view_count_1h": 2242.34
+    },
+    {
+        "edge_id": "e019",
+        "from_category": "Cocina",
+        "to_category": "Tecnologia",
+        "transition_count": 74,
+        "flagged_frac": 0.1216,
+        "avg_view_count_1h": 2506.73
+    },
+    {
+        "edge_id": "e020",
+        "from_category": "Cocina",
+        "to_category": "Videojuegos",
+        "transition_count": 88,
+        "flagged_frac": 0.0909,
+        "avg_view_count_1h": 2417.11
+    },
+    {
+        "edge_id": "e021",
+        "from_category": "Deportes",
+        "to_category": "Ciencia",
+        "transition_count": 83,
+        "flagged_frac": 0.1205,
+        "avg_view_count_1h": 2500.76
+    },
+    {
+        "edge_id": "e022",
+        "from_category": "Deportes",
+        "to_category": "Cocina",
+        "transition_count": 91,
+        "flagged_frac": 0.1099,
+        "avg_view_count_1h": 2625.73
+    },
+    {
+        "edge_id": "e023",
+        "from_category": "Deportes",
+        "to_category": "Deportes",
+        "transition_count": 88,
+        "flagged_frac": 0.0455,
+        "avg_view_count_1h": 2659.14
+    },
+    {
+        "edge_id": "e024",
+        "from_category": "Deportes",
+        "to_category": "Educacion",
+        "transition_count": 75,
+        "flagged_frac": 0.12,
+        "avg_view_count_1h": 2540.72
+    },
+    {
+        "edge_id": "e025",
+        "from_category": "Deportes",
+        "to_category": "Entretenimiento",
+        "transition_count": 79,
+        "flagged_frac": 0.0633,
+        "avg_view_count_1h": 2648.29
+    },
+    {
+        "edge_id": "e026",
+        "from_category": "Deportes",
+        "to_category": "Musica",
+        "transition_count": 81,
+        "flagged_frac": 0.1111,
+        "avg_view_count_1h": 2391.86
+    },
+    {
+        "edge_id": "e027",
+        "from_category": "Deportes",
+        "to_category": "Noticias",
+        "transition_count": 89,
+        "flagged_frac": 0.1461,
+        "avg_view_count_1h": 2527.21
+    },
+    {
+        "edge_id": "e028",
+        "from_category": "Deportes",
+        "to_category": "Salud",
+        "transition_count": 91,
+        "flagged_frac": 0.0879,
+        "avg_view_count_1h": 2257.21
+    },
+    {
+        "edge_id": "e029",
+        "from_category": "Deportes",
+        "to_category": "Tecnologia",
+        "transition_count": 79,
+        "flagged_frac": 0.1266,
+        "avg_view_count_1h": 2841.94
+    },
+    {
+        "edge_id": "e030",
+        "from_category": "Deportes",
+        "to_category": "Videojuegos",
+        "transition_count": 95,
+        "flagged_frac": 0.0842,
+        "avg_view_count_1h": 2602.08
+    },
+    {
+        "edge_id": "e031",
+        "from_category": "Educacion",
+        "to_category": "Ciencia",
+        "transition_count": 74,
+        "flagged_frac": 0.1486,
+        "avg_view_count_1h": 2333.51
+    },
+    {
+        "edge_id": "e032",
+        "from_category": "Educacion",
+        "to_category": "Cocina",
+        "transition_count": 89,
+        "flagged_frac": 0.0562,
+        "avg_view_count_1h": 2479.83
+    },
+    {
+        "edge_id": "e033",
+        "from_category": "Educacion",
+        "to_category": "Deportes",
+        "transition_count": 81,
+        "flagged_frac": 0.0864,
+        "avg_view_count_1h": 2421.47
+    },
+    {
+        "edge_id": "e034",
+        "from_category": "Educacion",
+        "to_category": "Educacion",
+        "transition_count": 95,
+        "flagged_frac": 0.1053,
+        "avg_view_count_1h": 2621.06
+    },
+    {
+        "edge_id": "e035",
+        "from_category": "Educacion",
+        "to_category": "Entretenimiento",
+        "transition_count": 69,
+        "flagged_frac": 0.058,
+        "avg_view_count_1h": 2673.65
+    },
+    {
+        "edge_id": "e036",
+        "from_category": "Educacion",
+        "to_category": "Musica",
+        "transition_count": 92,
+        "flagged_frac": 0.1304,
+        "avg_view_count_1h": 2470.39
+    },
+    {
+        "edge_id": "e037",
+        "from_category": "Educacion",
+        "to_category": "Noticias",
+        "transition_count": 71,
+        "flagged_frac": 0.1549,
+        "avg_view_count_1h": 2318.0
+    },
+    {
+        "edge_id": "e038",
+        "from_category": "Educacion",
+        "to_category": "Salud",
+        "transition_count": 76,
+        "flagged_frac": 0.1184,
+        "avg_view_count_1h": 2650.41
+    },
+    {
+        "edge_id": "e039",
+        "from_category": "Educacion",
+        "to_category": "Tecnologia",
+        "transition_count": 69,
+        "flagged_frac": 0.087,
+        "avg_view_count_1h": 2758.43
+    },
+    {
+        "edge_id": "e040",
+        "from_category": "Educacion",
+        "to_category": "Videojuegos",
+        "transition_count": 87,
+        "flagged_frac": 0.092,
+        "avg_view_count_1h": 2585.15
+    },
+    {
+        "edge_id": "e041",
+        "from_category": "Entretenimiento",
+        "to_category": "Ciencia",
+        "transition_count": 85,
+        "flagged_frac": 0.1765,
+        "avg_view_count_1h": 2523.59
+    },
+    {
+        "edge_id": "e042",
+        "from_category": "Entretenimiento",
+        "to_category": "Cocina",
+        "transition_count": 78,
+        "flagged_frac": 0.0256,
+        "avg_view_count_1h": 2364.96
+    },
+    {
+        "edge_id": "e043",
+        "from_category": "Entretenimiento",
+        "to_category": "Deportes",
+        "transition_count": 83,
+        "flagged_frac": 0.0361,
+        "avg_view_count_1h": 2659.54
+    },
+    {
+        "edge_id": "e044",
+        "from_category": "Entretenimiento",
+        "to_category": "Educacion",
+        "transition_count": 83,
+        "flagged_frac": 0.1205,
+        "avg_view_count_1h": 2499.76
+    },
+    {
+        "edge_id": "e045",
+        "from_category": "Entretenimiento",
+        "to_category": "Entretenimiento",
+        "transition_count": 67,
+        "flagged_frac": 0.1493,
+        "avg_view_count_1h": 2488.13
+    },
+    {
+        "edge_id": "e046",
+        "from_category": "Entretenimiento",
+        "to_category": "Musica",
+        "transition_count": 80,
+        "flagged_frac": 0.1625,
+        "avg_view_count_1h": 2515.68
+    },
+    {
+        "edge_id": "e047",
+        "from_category": "Entretenimiento",
+        "to_category": "Noticias",
+        "transition_count": 78,
+        "flagged_frac": 0.1538,
+        "avg_view_count_1h": 2526.49
+    },
+    {
+        "edge_id": "e048",
+        "from_category": "Entretenimiento",
+        "to_category": "Salud",
+        "transition_count": 73,
+        "flagged_frac": 0.1233,
+        "avg_view_count_1h": 2580.26
+    },
+    {
+        "edge_id": "e049",
+        "from_category": "Entretenimiento",
+        "to_category": "Tecnologia",
+        "transition_count": 73,
+        "flagged_frac": 0.1644,
+        "avg_view_count_1h": 2744.92
+    },
+    {
+        "edge_id": "e050",
+        "from_category": "Entretenimiento",
+        "to_category": "Videojuegos",
+        "transition_count": 90,
+        "flagged_frac": 0.0667,
+        "avg_view_count_1h": 2677.17
+    },
+    {
+        "edge_id": "e051",
+        "from_category": "Musica",
+        "to_category": "Ciencia",
+        "transition_count": 67,
+        "flagged_frac": 0.1045,
+        "avg_view_count_1h": 2516.27
+    },
+    {
+        "edge_id": "e052",
+        "from_category": "Musica",
+        "to_category": "Cocina",
+        "transition_count": 81,
+        "flagged_frac": 0.1358,
+        "avg_view_count_1h": 2618.62
+    },
+    {
+        "edge_id": "e053",
+        "from_category": "Musica",
+        "to_category": "Deportes",
+        "transition_count": 68,
+        "flagged_frac": 0.1029,
+        "avg_view_count_1h": 2477.84
+    },
+    {
+        "edge_id": "e054",
+        "from_category": "Musica",
+        "to_category": "Educacion",
+        "transition_count": 80,
+        "flagged_frac": 0.0375,
+        "avg_view_count_1h": 2458.54
+    },
+    {
+        "edge_id": "e055",
+        "from_category": "Musica",
+        "to_category": "Entretenimiento",
+        "transition_count": 86,
+        "flagged_frac": 0.093,
+        "avg_view_count_1h": 2498.2
+    },
+    {
+        "edge_id": "e056",
+        "from_category": "Musica",
+        "to_category": "Musica",
+        "transition_count": 73,
+        "flagged_frac": 0.0959,
+        "avg_view_count_1h": 2535.23
+    },
+    {
+        "edge_id": "e057",
+        "from_category": "Musica",
+        "to_category": "Noticias",
+        "transition_count": 74,
+        "flagged_frac": 0.0946,
+        "avg_view_count_1h": 2785.3
+    },
+    {
+        "edge_id": "e058",
+        "from_category": "Musica",
+        "to_category": "Salud",
+        "transition_count": 63,
+        "flagged_frac": 0.0476,
+        "avg_view_count_1h": 2817.73
+    },
+    {
+        "edge_id": "e059",
+        "from_category": "Musica",
+        "to_category": "Tecnologia",
+        "transition_count": 81,
+        "flagged_frac": 0.1358,
+        "avg_view_count_1h": 2334.09
+    },
+    {
+        "edge_id": "e060",
+        "from_category": "Musica",
+        "to_category": "Videojuegos",
+        "transition_count": 85,
+        "flagged_frac": 0.0941,
+        "avg_view_count_1h": 2369.21
+    },
+    {
+        "edge_id": "e061",
+        "from_category": "Noticias",
+        "to_category": "Ciencia",
+        "transition_count": 81,
+        "flagged_frac": 0.0741,
+        "avg_view_count_1h": 2370.95
+    },
+    {
+        "edge_id": "e062",
+        "from_category": "Noticias",
+        "to_category": "Cocina",
+        "transition_count": 76,
+        "flagged_frac": 0.0658,
+        "avg_view_count_1h": 2603.63
+    },
+    {
+        "edge_id": "e063",
+        "from_category": "Noticias",
+        "to_category": "Deportes",
+        "transition_count": 93,
+        "flagged_frac": 0.0968,
+        "avg_view_count_1h": 2670.6
+    },
+    {
+        "edge_id": "e064",
+        "from_category": "Noticias",
+        "to_category": "Educacion",
+        "transition_count": 78,
+        "flagged_frac": 0.1154,
+        "avg_view_count_1h": 2295.79
+    },
+    {
+        "edge_id": "e065",
+        "from_category": "Noticias",
+        "to_category": "Entretenimiento",
+        "transition_count": 100,
+        "flagged_frac": 0.11,
+        "avg_view_count_1h": 2474.01
+    },
+    {
+        "edge_id": "e066",
+        "from_category": "Noticias",
+        "to_category": "Musica",
+        "transition_count": 65,
+        "flagged_frac": 0.1385,
+        "avg_view_count_1h": 2398.23
+    },
+    {
+        "edge_id": "e067",
+        "from_category": "Noticias",
+        "to_category": "Noticias",
+        "transition_count": 81,
+        "flagged_frac": 0.0988,
+        "avg_view_count_1h": 2642.84
+    },
+    {
+        "edge_id": "e068",
+        "from_category": "Noticias",
+        "to_category": "Salud",
+        "transition_count": 77,
+        "flagged_frac": 0.0909,
+        "avg_view_count_1h": 2421.16
+    },
+    {
+        "edge_id": "e069",
+        "from_category": "Noticias",
+        "to_category": "Tecnologia",
+        "transition_count": 69,
+        "flagged_frac": 0.0725,
+        "avg_view_count_1h": 2604.46
+    },
+    {
+        "edge_id": "e070",
+        "from_category": "Noticias",
+        "to_category": "Videojuegos",
+        "transition_count": 77,
+        "flagged_frac": 0.0779,
+        "avg_view_count_1h": 2502.44
+    },
+    {
+        "edge_id": "e071",
+        "from_category": "Salud",
+        "to_category": "Ciencia",
+        "transition_count": 69,
+        "flagged_frac": 0.0725,
+        "avg_view_count_1h": 2528.9
+    },
+    {
+        "edge_id": "e072",
+        "from_category": "Salud",
+        "to_category": "Cocina",
+        "transition_count": 73,
+        "flagged_frac": 0.1233,
+        "avg_view_count_1h": 2621.77
+    },
+    {
+        "edge_id": "e073",
+        "from_category": "Salud",
+        "to_category": "Deportes",
+        "transition_count": 90,
+        "flagged_frac": 0.1778,
+        "avg_view_count_1h": 2460.52
+    },
+    {
+        "edge_id": "e074",
+        "from_category": "Salud",
+        "to_category": "Educacion",
+        "transition_count": 67,
+        "flagged_frac": 0.0746,
+        "avg_view_count_1h": 2326.22
+    },
+    {
+        "edge_id": "e075",
+        "from_category": "Salud",
+        "to_category": "Entretenimiento",
+        "transition_count": 77,
+        "flagged_frac": 0.1169,
+        "avg_view_count_1h": 2369.49
+    },
+    {
+        "edge_id": "e076",
+        "from_category": "Salud",
+        "to_category": "Musica",
+        "transition_count": 75,
+        "flagged_frac": 0.0533,
+        "avg_view_count_1h": 2661.07
+    },
+    {
+        "edge_id": "e077",
+        "from_category": "Salud",
+        "to_category": "Noticias",
+        "transition_count": 78,
+        "flagged_frac": 0.0897,
+        "avg_view_count_1h": 2694.9
+    },
+    {
+        "edge_id": "e078",
+        "from_category": "Salud",
+        "to_category": "Salud",
+        "transition_count": 83,
+        "flagged_frac": 0.1446,
+        "avg_view_count_1h": 2650.14
+    },
+    {
+        "edge_id": "e079",
+        "from_category": "Salud",
+        "to_category": "Tecnologia",
+        "transition_count": 103,
+        "flagged_frac": 0.1165,
+        "avg_view_count_1h": 2465.02
+    },
+    {
+        "edge_id": "e080",
+        "from_category": "Salud",
+        "to_category": "Videojuegos",
+        "transition_count": 89,
+        "flagged_frac": 0.1573,
+        "avg_view_count_1h": 2664.25
+    },
+    {
+        "edge_id": "e081",
+        "from_category": "Tecnologia",
+        "to_category": "Ciencia",
+        "transition_count": 94,
+        "flagged_frac": 0.1489,
+        "avg_view_count_1h": 2433.29
+    },
+    {
+        "edge_id": "e082",
+        "from_category": "Tecnologia",
+        "to_category": "Cocina",
+        "transition_count": 71,
+        "flagged_frac": 0.1268,
+        "avg_view_count_1h": 2641.65
+    },
+    {
+        "edge_id": "e083",
+        "from_category": "Tecnologia",
+        "to_category": "Deportes",
+        "transition_count": 67,
+        "flagged_frac": 0.0746,
+        "avg_view_count_1h": 2147.76
+    },
+    {
+        "edge_id": "e084",
+        "from_category": "Tecnologia",
+        "to_category": "Educacion",
+        "transition_count": 84,
+        "flagged_frac": 0.0714,
+        "avg_view_count_1h": 2672.64
+    },
+    {
+        "edge_id": "e085",
+        "from_category": "Tecnologia",
+        "to_category": "Entretenimiento",
+        "transition_count": 68,
+        "flagged_frac": 0.1176,
+        "avg_view_count_1h": 2445.0
+    },
+    {
+        "edge_id": "e086",
+        "from_category": "Tecnologia",
+        "to_category": "Musica",
+        "transition_count": 84,
+        "flagged_frac": 0.0714,
+        "avg_view_count_1h": 2346.8
+    },
+    {
+        "edge_id": "e087",
+        "from_category": "Tecnologia",
+        "to_category": "Noticias",
+        "transition_count": 77,
+        "flagged_frac": 0.0909,
+        "avg_view_count_1h": 2814.17
+    },
+    {
+        "edge_id": "e088",
+        "from_category": "Tecnologia",
+        "to_category": "Salud",
+        "transition_count": 88,
+        "flagged_frac": 0.1023,
+        "avg_view_count_1h": 2276.69
+    },
+    {
+        "edge_id": "e089",
+        "from_category": "Tecnologia",
+        "to_category": "Tecnologia",
+        "transition_count": 84,
+        "flagged_frac": 0.1548,
+        "avg_view_count_1h": 2649.45
+    },
+    {
+        "edge_id": "e090",
+        "from_category": "Tecnologia",
+        "to_category": "Videojuegos",
+        "transition_count": 78,
+        "flagged_frac": 0.0769,
+        "avg_view_count_1h": 2336.0
+    },
+    {
+        "edge_id": "e091",
+        "from_category": "Videojuegos",
+        "to_category": "Ciencia",
+        "transition_count": 80,
+        "flagged_frac": 0.15,
+        "avg_view_count_1h": 2296.86
+    },
+    {
+        "edge_id": "e092",
+        "from_category": "Videojuegos",
+        "to_category": "Cocina",
+        "transition_count": 78,
+        "flagged_frac": 0.1154,
+        "avg_view_count_1h": 2755.53
+    },
+    {
+        "edge_id": "e093",
+        "from_category": "Videojuegos",
+        "to_category": "Deportes",
+        "transition_count": 90,
+        "flagged_frac": 0.0444,
+        "avg_view_count_1h": 2589.22
+    },
+    {
+        "edge_id": "e094",
+        "from_category": "Videojuegos",
+        "to_category": "Educacion",
+        "transition_count": 87,
+        "flagged_frac": 0.0575,
+        "avg_view_count_1h": 2593.66
+    },
+    {
+        "edge_id": "e095",
+        "from_category": "Videojuegos",
+        "to_category": "Entretenimiento",
+        "transition_count": 95,
+        "flagged_frac": 0.0632,
+        "avg_view_count_1h": 2635.49
+    },
+    {
+        "edge_id": "e096",
+        "from_category": "Videojuegos",
+        "to_category": "Musica",
+        "transition_count": 78,
+        "flagged_frac": 0.0385,
+        "avg_view_count_1h": 2743.27
+    },
+    {
+        "edge_id": "e097",
+        "from_category": "Videojuegos",
+        "to_category": "Noticias",
+        "transition_count": 69,
+        "flagged_frac": 0.087,
+        "avg_view_count_1h": 2362.07
+    },
+    {
+        "edge_id": "e098",
+        "from_category": "Videojuegos",
+        "to_category": "Salud",
+        "transition_count": 84,
+        "flagged_frac": 0.1071,
+        "avg_view_count_1h": 2236.69
+    },
+    {
+        "edge_id": "e099",
+        "from_category": "Videojuegos",
+        "to_category": "Tecnologia",
+        "transition_count": 83,
+        "flagged_frac": 0.0723,
+        "avg_view_count_1h": 2384.81
+    },
+    {
+        "edge_id": "e100",
+        "from_category": "Videojuegos",
+        "to_category": "Videojuegos",
+        "transition_count": 84,
+        "flagged_frac": 0.1071,
+        "avg_view_count_1h": 2551.65
+    }
+]
