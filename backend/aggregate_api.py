@@ -1,10 +1,9 @@
 """API del dashboard: GET /api/dashboard devuelve un único JSON con los 4 paneles.
 
-    py backend/aggregate_api.py --serve 8000        # API (http://localhost:8000/api/dashboard)
-    py backend/aggregate_api.py                     # imprime el JSON una vez
-    py backend/aggregate_api.py --refresh           # recalcula benchmarks (QuickSort, etc.)
-
-Parámetros de consulta: ?pos=N fija la posición del stream (útil para pruebas).
+Compatible tanto con ejecución directa:
+    py backend/aggregate_api.py --serve 8000
+Como con servidores WSGI de producción (Render, Gunicorn):
+    gunicorn backend.aggregate_api:app --bind 0.0.0.0:$PORT
 """
 from __future__ import annotations
 
@@ -50,11 +49,49 @@ class Dashboard:
         }
 
 
+# Instancia singleton para WSGI / Standalone
+dash_instance = Dashboard(refresh=False)
+
+
+def app(environ, start_response):
+    """Aplicación WSGI estándar compatible con Gunicorn / uWSGI / Render."""
+    method = environ.get("REQUEST_METHOD", "GET")
+    path = environ.get("PATH_INFO", "/")
+
+    headers = [
+        ("Access-Control-Allow-Origin", "*"),
+        ("Access-Control-Allow-Methods", "GET, OPTIONS"),
+        ("Access-Control-Allow-Headers", "Content-Type"),
+    ]
+
+    if method == "OPTIONS":
+        start_response("204 No Content", headers)
+        return [b""]
+
+    if path in ("/", "/health"):
+        data = json.dumps({"status": "ok", "service": "content-moderation-api"}).encode("utf-8")
+        headers.extend([("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(data)))])
+        start_response("200 OK", headers)
+        return [data]
+
+    if path == "/api/dashboard":
+        qs = parse_qs(environ.get("QUERY_STRING", ""))
+        pos = int(qs["pos"][0]) if "pos" in qs else None
+        data = json.dumps(dash_instance.payload(pos), ensure_ascii=False).encode("utf-8")
+        headers.extend([("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(data)))])
+        start_response("200 OK", headers)
+        return [data]
+
+    start_response("404 Not Found", [("Content-Type", "text/plain")])
+    return [b"Not Found"]
+
+
 def make_handler(dash: Dashboard):
     class Handler(BaseHTTPRequestHandler):
         def _cors(self):
             self.send_header("Access-Control-Allow-Origin", "*")
             self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type")
 
         def do_OPTIONS(self):
             self.send_response(204)
@@ -86,9 +123,9 @@ def make_handler(dash: Dashboard):
             try:
                 self.wfile.write(body)
             except (ConnectionAbortedError, BrokenPipeError):
-                pass  # el navegador cerró la conexión (recarga/cancelación)
+                pass
 
-        def log_message(self, *args):  # silencia el log por petición (polling cada 5 s)
+        def log_message(self, *args):
             pass
 
     return Handler
@@ -101,7 +138,10 @@ def main() -> None:
     ap.add_argument("--rate", type=float, default=25.0, help="eventos/s simulados del stream")
     args = ap.parse_args()
 
-    dash = Dashboard(args.refresh, args.rate)
+    dash = dash_instance
+    if args.refresh:
+        dash = Dashboard(refresh=True, rate_eps=args.rate)
+
     port = args.serve or (int(os.environ["PORT"]) if "PORT" in os.environ else None)
     if port:
         print(f"API lista: http://0.0.0.0:{port}/api/dashboard", flush=True)
