@@ -1,0 +1,1620 @@
+{
+ "meta": {
+  "videos": 10000,
+  "categories": 10
+ },
+ "capacity": {
+  "records": 10000,
+  "span_days": 0.9996412037037037,
+  "uploads_per_sec": 0.1157822829950561,
+  "growth_factor": 10,
+  "uploads_per_sec_growth": 1.1578228299505609,
+  "avg_metadata_bytes": 167.3534,
+  "storage_per_day_bytes": 16741346.733202882,
+  "storage_per_year_bytes": 6110591557.619052,
+  "assumption": "El dataset se toma como la muestra de tráfico del periodo observado; el crecimiento ×10 escala la tasa de llegada y el volumen de metadatos (sin archivos de video)."
+ },
+ "hashing": {
+  "key": "categoría#video_id",
+  "population": "videos marcados (pendientes de revisión)",
+  "default_config": "1017_128",
+  "configs": {
+   "250_64": {
+    "n": 250,
+    "buckets": 64,
+    "histogram": [
+     {
+      "load": 1,
+      "chaining": 4,
+      "two_choices": 0
+     },
+     {
+      "load": 2,
+      "chaining": 13,
+      "two_choices": 3
+     },
+     {
+      "load": 3,
+      "chaining": 11,
+      "two_choices": 16
+     },
+     {
+      "load": 4,
+      "chaining": 16,
+      "two_choices": 29
+     },
+     {
+      "load": 5,
+      "chaining": 11,
+      "two_choices": 16
+     },
+     {
+      "load": 6,
+      "chaining": 3,
+      "two_choices": 0
+     },
+     {
+      "load": 7,
+      "chaining": 2,
+      "two_choices": 0
+     },
+     {
+      "load": 8,
+      "chaining": 2,
+      "two_choices": 0
+     },
+     {
+      "load": 9,
+      "chaining": 1,
+      "two_choices": 0
+     },
+     {
+      "load": 10,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 11,
+      "chaining": 1,
+      "two_choices": 0
+     }
+    ],
+    "stats": {
+     "chaining": {
+      "max_load": 11,
+      "mean": 3.90625,
+      "std": 1.9583056292366623,
+      "empty_buckets": 0,
+      "theoretical_max": 9.606361761075167
+     },
+     "two_choices": {
+      "max_load": 5,
+      "mean": 3.90625,
+      "std": 0.8238391454040043,
+      "empty_buckets": 0,
+      "theoretical_max": 6.962446127776259
+     }
+    }
+   },
+   "250_128": {
+    "n": 250,
+    "buckets": 128,
+    "histogram": [
+     {
+      "load": 0,
+      "chaining": 17,
+      "two_choices": 3
+     },
+     {
+      "load": 1,
+      "chaining": 37,
+      "two_choices": 33
+     },
+     {
+      "load": 2,
+      "chaining": 37,
+      "two_choices": 60
+     },
+     {
+      "load": 3,
+      "chaining": 20,
+      "two_choices": 31
+     },
+     {
+      "load": 4,
+      "chaining": 8,
+      "two_choices": 1
+     },
+     {
+      "load": 5,
+      "chaining": 7,
+      "two_choices": 0
+     },
+     {
+      "load": 6,
+      "chaining": 2,
+      "two_choices": 0
+     }
+    ],
+    "stats": {
+     "chaining": {
+      "max_load": 6,
+      "mean": 1.953125,
+      "std": 1.4023383095298367,
+      "empty_buckets": 17,
+      "theoretical_max": 6.306657269139165
+     },
+     "two_choices": {
+      "max_load": 4,
+      "mean": 1.953125,
+      "std": 0.7891785186983994,
+      "empty_buckets": 3,
+      "theoretical_max": 5.2317135491127065
+     }
+    }
+   },
+   "250_256": {
+    "n": 250,
+    "buckets": 256,
+    "histogram": [
+     {
+      "load": 0,
+      "chaining": 98,
+      "two_choices": 60
+     },
+     {
+      "load": 1,
+      "chaining": 97,
+      "two_choices": 148
+     },
+     {
+      "load": 2,
+      "chaining": 39,
+      "two_choices": 42
+     },
+     {
+      "load": 3,
+      "chaining": 14,
+      "two_choices": 6
+     },
+     {
+      "load": 4,
+      "chaining": 7,
+      "two_choices": 0
+     },
+     {
+      "load": 5,
+      "chaining": 1,
+      "two_choices": 0
+     }
+    ],
+    "stats": {
+     "chaining": {
+      "max_load": 5,
+      "mean": 0.9765625,
+      "std": 1.0305099143597551,
+      "empty_buckets": 98,
+      "theoretical_max": 4.2675235596676995
+     },
+     "two_choices": {
+      "max_load": 3,
+      "mean": 0.9765625,
+      "std": 0.7011691547649184,
+      "empty_buckets": 60,
+      "theoretical_max": 4.447796127055103
+     }
+    }
+   },
+   "500_64": {
+    "n": 500,
+    "buckets": 64,
+    "histogram": [
+     {
+      "load": 2,
+      "chaining": 2,
+      "two_choices": 0
+     },
+     {
+      "load": 3,
+      "chaining": 4,
+      "two_choices": 0
+     },
+     {
+      "load": 4,
+      "chaining": 4,
+      "two_choices": 1
+     },
+     {
+      "load": 5,
+      "chaining": 4,
+      "two_choices": 0
+     },
+     {
+      "load": 6,
+      "chaining": 6,
+      "two_choices": 4
+     },
+     {
+      "load": 7,
+      "chaining": 13,
+      "two_choices": 17
+     },
+     {
+      "load": 8,
+      "chaining": 10,
+      "two_choices": 25
+     },
+     {
+      "load": 9,
+      "chaining": 7,
+      "two_choices": 17
+     },
+     {
+      "load": 10,
+      "chaining": 4,
+      "two_choices": 0
+     },
+     {
+      "load": 11,
+      "chaining": 3,
+      "two_choices": 0
+     },
+     {
+      "load": 12,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 13,
+      "chaining": 3,
+      "two_choices": 0
+     },
+     {
+      "load": 14,
+      "chaining": 2,
+      "two_choices": 0
+     },
+     {
+      "load": 15,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 16,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 17,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 18,
+      "chaining": 1,
+      "two_choices": 0
+     },
+     {
+      "load": 19,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 20,
+      "chaining": 1,
+      "two_choices": 0
+     }
+    ],
+    "stats": {
+     "chaining": {
+      "max_load": 20,
+      "mean": 7.8125,
+      "std": 3.4181272284688293,
+      "empty_buckets": 0,
+      "theoretical_max": 15.873675359554888
+     },
+     "two_choices": {
+      "max_load": 9,
+      "mean": 7.8125,
+      "std": 0.998044963916957,
+      "empty_buckets": 0,
+      "theoretical_max": 10.868696127776259
+     }
+    }
+   },
+   "500_128": {
+    "n": 500,
+    "buckets": 128,
+    "histogram": [
+     {
+      "load": 0,
+      "chaining": 6,
+      "two_choices": 0
+     },
+     {
+      "load": 1,
+      "chaining": 7,
+      "two_choices": 2
+     },
+     {
+      "load": 2,
+      "chaining": 22,
+      "two_choices": 7
+     },
+     {
+      "load": 3,
+      "chaining": 18,
+      "two_choices": 27
+     },
+     {
+      "load": 4,
+      "chaining": 30,
+      "two_choices": 60
+     },
+     {
+      "load": 5,
+      "chaining": 23,
+      "two_choices": 29
+     },
+     {
+      "load": 6,
+      "chaining": 8,
+      "two_choices": 3
+     },
+     {
+      "load": 7,
+      "chaining": 7,
+      "two_choices": 0
+     },
+     {
+      "load": 8,
+      "chaining": 5,
+      "two_choices": 0
+     },
+     {
+      "load": 9,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 10,
+      "chaining": 1,
+      "two_choices": 0
+     },
+     {
+      "load": 11,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 12,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 13,
+      "chaining": 1,
+      "two_choices": 0
+     }
+    ],
+    "stats": {
+     "chaining": {
+      "max_load": 13,
+      "mean": 3.90625,
+      "std": 2.1266078476061354,
+      "empty_buckets": 6,
+      "theoretical_max": 10.063074379245522
+     },
+     "two_choices": {
+      "max_load": 6,
+      "mean": 3.90625,
+      "std": 0.939061200082295,
+      "empty_buckets": 0,
+      "theoretical_max": 7.1848385491127065
+     }
+    }
+   },
+   "500_256": {
+    "n": 500,
+    "buckets": 256,
+    "histogram": [
+     {
+      "load": 0,
+      "chaining": 39,
+      "two_choices": 9
+     },
+     {
+      "load": 1,
+      "chaining": 63,
+      "two_choices": 57
+     },
+     {
+      "load": 2,
+      "chaining": 80,
+      "two_choices": 128
+     },
+     {
+      "load": 3,
+      "chaining": 41,
+      "two_choices": 61
+     },
+     {
+      "load": 4,
+      "chaining": 19,
+      "two_choices": 1
+     },
+     {
+      "load": 5,
+      "chaining": 8,
+      "two_choices": 0
+     },
+     {
+      "load": 6,
+      "chaining": 5,
+      "two_choices": 0
+     },
+     {
+      "load": 7,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 8,
+      "chaining": 1,
+      "two_choices": 0
+     }
+    ],
+    "stats": {
+     "chaining": {
+      "max_load": 8,
+      "mean": 1.953125,
+      "std": 1.4299222826346192,
+      "empty_buckets": 39,
+      "theoretical_max": 6.607246763823793
+     },
+     "two_choices": {
+      "max_load": 4,
+      "mean": 1.953125,
+      "std": 0.7842131307081003,
+      "empty_buckets": 9,
+      "theoretical_max": 5.424358627055103
+     }
+    }
+   },
+   "1017_64": {
+    "n": 1017,
+    "buckets": 64,
+    "histogram": [
+     {
+      "load": 4,
+      "chaining": 1,
+      "two_choices": 0
+     },
+     {
+      "load": 5,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 6,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 7,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 8,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 9,
+      "chaining": 2,
+      "two_choices": 0
+     },
+     {
+      "load": 10,
+      "chaining": 1,
+      "two_choices": 0
+     },
+     {
+      "load": 11,
+      "chaining": 6,
+      "two_choices": 0
+     },
+     {
+      "load": 12,
+      "chaining": 4,
+      "two_choices": 1
+     },
+     {
+      "load": 13,
+      "chaining": 7,
+      "two_choices": 3
+     },
+     {
+      "load": 14,
+      "chaining": 6,
+      "two_choices": 2
+     },
+     {
+      "load": 15,
+      "chaining": 7,
+      "two_choices": 14
+     },
+     {
+      "load": 16,
+      "chaining": 4,
+      "two_choices": 23
+     },
+     {
+      "load": 17,
+      "chaining": 7,
+      "two_choices": 18
+     },
+     {
+      "load": 18,
+      "chaining": 5,
+      "two_choices": 3
+     },
+     {
+      "load": 19,
+      "chaining": 2,
+      "two_choices": 0
+     },
+     {
+      "load": 20,
+      "chaining": 2,
+      "two_choices": 0
+     },
+     {
+      "load": 21,
+      "chaining": 2,
+      "two_choices": 0
+     },
+     {
+      "load": 22,
+      "chaining": 1,
+      "two_choices": 0
+     },
+     {
+      "load": 23,
+      "chaining": 1,
+      "two_choices": 0
+     },
+     {
+      "load": 24,
+      "chaining": 3,
+      "two_choices": 0
+     },
+     {
+      "load": 25,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 26,
+      "chaining": 1,
+      "two_choices": 0
+     },
+     {
+      "load": 27,
+      "chaining": 1,
+      "two_choices": 0
+     },
+     {
+      "load": 28,
+      "chaining": 1,
+      "two_choices": 0
+     }
+    ],
+    "stats": {
+     "chaining": {
+      "max_load": 28,
+      "mean": 15.890625,
+      "std": 4.599990446661275,
+      "empty_buckets": 0,
+      "theoretical_max": 27.38734205283837
+     },
+     "two_choices": {
+      "max_load": 18,
+      "mean": 15.890625,
+      "std": 1.2134298947096203,
+      "empty_buckets": 0,
+      "theoretical_max": 18.946821127776257
+     }
+    }
+   },
+   "1017_128": {
+    "n": 1017,
+    "buckets": 128,
+    "histogram": [
+     {
+      "load": 1,
+      "chaining": 1,
+      "two_choices": 0
+     },
+     {
+      "load": 2,
+      "chaining": 0,
+      "two_choices": 0
+     },
+     {
+      "load": 3,
+      "chaining": 6,
+      "two_choices": 0
+     },
+     {
+      "load": 4,
+      "chaining": 7,
+      "two_choices": 1
+     },
+     {
+      "load": 5,
+      "chaining": 16,
+      "two_choices": 2
+     },
+     {
+      "load": 6,
+      "chaining": 19,
+      "two_choices": 6
+     },
+     {
+      "load": 7,
+      "chaining": 15,
+      "two_choices": 28
+     },
+     {
+      "load": 8,
+      "chaining": 7,
+      "two_choices": 51
+     },
+     {
+      "load": 9,
+      "chaining": 18,
+      "two_choices": 37
+     },
+     {
+      "load": 10,
+      "chaining": 12,
+      "two_choices": 3
+     },
+     {
+      "load": 11,
+      "chaining": 10,
+      "two_choices": 0
+     },
+     {
+      "load": 12,
+      "chaining": 7,
+      "two_choices": 0
+     },
+     {
+      "load": 13,
+      "chaining": 4,
+      "two_choices": 0
+     },
+     {
+      "load": 14,
+      "chaining": 4,
+      "two_choices": 0
+     },
+     {
+      "load": 15,
+      "chaining": 1,
+      "two_choices": 0
+     },
+     {
+      "load": 16,
+      "chaining": 1,
+      "two_choices": 0
+     }
+    ],
+    "stats": {
+     "chaining": {
+      "max_load": 16,
+      "mean": 7.9453125,
+      "std": 3.0241439743080605,
+      "empty_buckets": 0,
+      "theoretical_max": 16.72607518968691
+     },
+     "two_choices": {
+      "max_load": 10,
+      "mean": 7.9453125,
+      "std": 1.0255226849483876,
+      "empty_buckets": 0,
+      "theoretical_max": 11.223901049112706
+     }
+    }
+   },
+   "1017_256": {
+    "n": 1017,
+    "buckets": 256,
+    "histogram": [
+     {
+      "load": 0,
+      "chaining": 4,
+      "two_choices": 0
+     },
+     {
+      "load": 1,
+      "chaining": 20,
+      "two_choices": 1
+     },
+     {
+      "load": 2,
+      "chaining": 39,
+      "two_choices": 10
+     },
+     {
+      "load": 3,
+      "chaining": 56,
+      "two_choices": 65
+     },
+     {
+      "load": 4,
+      "chaining": 40,
+      "two_choices": 103
+     },
+     {
+      "load": 5,
+      "chaining": 40,
+      "two_choices": 73
+     },
+     {
+      "load": 6,
+      "chaining": 26,
+      "two_choices": 4
+     },
+     {
+      "load": 7,
+      "chaining": 19,
+      "two_choices": 0
+     },
+     {
+      "load": 8,
+      "chaining": 6,
+      "two_choices": 0
+     },
+     {
+      "load": 9,
+      "chaining": 6,
+      "two_choices": 0
+     }
+    ],
+    "stats": {
+     "chaining": {
+      "max_load": 9,
+      "mean": 3.97265625,
+      "std": 1.9929647687141732,
+      "empty_buckets": 4,
+      "theoretical_max": 10.610288935253195
+     },
+     "two_choices": {
+      "max_load": 6,
+      "mean": 3.97265625,
+      "std": 0.8900680138820501,
+      "empty_buckets": 0,
+      "theoretical_max": 7.443889877055103
+     }
+    }
+   }
+  },
+  "sharding": {
+   "workers": 32,
+   "videos": 10000,
+   "distinct_uploaders": 1991,
+   "collisions": 1959,
+   "max_videos": 383,
+   "min_videos": 255,
+   "mean_videos": 312.5,
+   "std_videos": 30.974788134868653,
+   "imbalance_ratio": 1.2256,
+   "videos_per_worker": [
+    342,
+    293,
+    345,
+    299,
+    281,
+    333,
+    263,
+    358,
+    308,
+    298,
+    279,
+    348,
+    351,
+    303,
+    302,
+    338,
+    300,
+    298,
+    289,
+    269,
+    283,
+    352,
+    342,
+    354,
+    306,
+    325,
+    383,
+    304,
+    317,
+    289,
+    293,
+    255
+   ]
+  }
+ },
+ "quicksort": {
+  "scenarios": {
+   "original": [
+    {
+     "n": 500,
+     "deterministic_ms": 0.5066000012448058,
+     "randomized_ms": 0.6650500145042315
+    },
+    {
+     "n": 1000,
+     "deterministic_ms": 1.0790000087581575,
+     "randomized_ms": 1.393750004353933
+    },
+    {
+     "n": 2000,
+     "deterministic_ms": 2.2873999987496063,
+     "randomized_ms": 2.8469499957282096
+    },
+    {
+     "n": 4000,
+     "deterministic_ms": 6.139200006145984,
+     "randomized_ms": 6.775549991289154
+    },
+    {
+     "n": 8000,
+     "deterministic_ms": 12.995649987715296,
+     "randomized_ms": 21.597750004730187
+    }
+   ],
+   "ordenado": [
+    {
+     "n": 500,
+     "deterministic_ms": 11.944900004891679,
+     "randomized_ms": 0.6246500124689192
+    },
+    {
+     "n": 1000,
+     "deterministic_ms": 48.63170000317041,
+     "randomized_ms": 1.3303000014275312
+    },
+    {
+     "n": 2000,
+     "deterministic_ms": 204.84510000096634,
+     "randomized_ms": 3.2666000042809173
+    },
+    {
+     "n": 4000,
+     "deterministic_ms": 813.8313499803189,
+     "randomized_ms": 6.905599992023781
+    },
+    {
+     "n": 8000,
+     "deterministic_ms": 3419.7171999840066,
+     "randomized_ms": 13.493200007360429
+    }
+   ],
+   "inverso": [
+    {
+     "n": 500,
+     "deterministic_ms": 7.802849999279715,
+     "randomized_ms": 0.6090999959269539
+    },
+    {
+     "n": 1000,
+     "deterministic_ms": 29.68150000378955,
+     "randomized_ms": 1.2689499999396503
+    },
+    {
+     "n": 2000,
+     "deterministic_ms": 112.81624999537598,
+     "randomized_ms": 2.853750003851019
+    },
+    {
+     "n": 4000,
+     "deterministic_ms": 406.00390000327025,
+     "randomized_ms": 6.804349992307834
+    },
+    {
+     "n": 8000,
+     "deterministic_ms": 1359.575800015591,
+     "randomized_ms": 14.619449997553602
+    }
+   ]
+  },
+  "default_scenario": "ordenado",
+  "unit": "ms",
+  "worst_case_speedup": 253.4400437345166,
+  "verified_against_sorted": true
+ },
+ "chernoff": {
+  "summary": {
+   "baseline_flag_rate": 0.1017,
+   "threshold_rate": 0.2034,
+   "alpha": 0.01,
+   "min_videos": 5,
+   "uploaders_evaluated": 1121,
+   "uploaders_exceeding_threshold": 140,
+   "uploaders_suspicious": 0
+  },
+  "top_uploaders": [
+   {
+    "uploader_id": "USER_0325",
+    "videos": 5,
+    "flagged": 3,
+    "flag_rate": 0.6,
+    "chernoff_p_observed": 0.024560201428994455,
+    "suspicious": false
+   },
+   {
+    "uploader_id": "USER_0825",
+    "videos": 5,
+    "flagged": 3,
+    "flag_rate": 0.6,
+    "chernoff_p_observed": 0.024560201428994455,
+    "suspicious": false
+   },
+   {
+    "uploader_id": "USER_1030",
+    "videos": 5,
+    "flagged": 3,
+    "flag_rate": 0.6,
+    "chernoff_p_observed": 0.024560201428994455,
+    "suspicious": false
+   },
+   {
+    "uploader_id": "USER_1380",
+    "videos": 9,
+    "flagged": 4,
+    "flag_rate": 0.4444444444444444,
+    "chernoff_p_observed": 0.030302845255020156,
+    "suspicious": false
+   },
+   {
+    "uploader_id": "USER_0121",
+    "videos": 10,
+    "flagged": 4,
+    "flag_rate": 0.4,
+    "chernoff_p_observed": 0.04706138911796407,
+    "suspicious": false
+   },
+   {
+    "uploader_id": "USER_0798",
+    "videos": 10,
+    "flagged": 4,
+    "flag_rate": 0.4,
+    "chernoff_p_observed": 0.04706138911796407,
+    "suspicious": false
+   },
+   {
+    "uploader_id": "USER_0006",
+    "videos": 6,
+    "flagged": 3,
+    "flag_rate": 0.5,
+    "chernoff_p_observed": 0.04879856283475761,
+    "suspicious": false
+   },
+   {
+    "uploader_id": "USER_0327",
+    "videos": 6,
+    "flagged": 3,
+    "flag_rate": 0.5,
+    "chernoff_p_observed": 0.04879856283475761,
+    "suspicious": false
+   },
+   {
+    "uploader_id": "USER_0769",
+    "videos": 6,
+    "flagged": 3,
+    "flag_rate": 0.5,
+    "chernoff_p_observed": 0.04879856283475761,
+    "suspicious": false
+   },
+   {
+    "uploader_id": "USER_0890",
+    "videos": 6,
+    "flagged": 3,
+    "flag_rate": 0.5,
+    "chernoff_p_observed": 0.04879856283475761,
+    "suspicious": false
+   }
+  ]
+ },
+ "moments_overall": {
+  "all_videos": {
+   "F0": 10,
+   "F1": 10000,
+   "F2": 10005406,
+   "collision_prob": 0.10005406,
+   "uniform_baseline": 0.1,
+   "skew_ratio": 1.0005406,
+   "top_category": "Deportes",
+   "top_share": 0.1049
+  },
+  "flagged_videos": {
+   "F0": 10,
+   "F1": 1017,
+   "F2": 104199,
+   "collision_prob": 0.10074456945785945,
+   "uniform_baseline": 0.1,
+   "skew_ratio": 1.0074456945785946,
+   "top_category": "Ciencia",
+   "top_share": 0.1160275319567355
+  }
+ },
+ "bloom_final": [
+  {
+   "bits_per_element": 4,
+   "hash_functions": 3,
+   "inserted": 801,
+   "negatives": 1190,
+   "false_positives": 200,
+   "false_negatives": 0,
+   "fp_rate_experimental": 0.16806722689075632,
+   "fp_rate_theoretical": 0.14689159766038104
+  },
+  {
+   "bits_per_element": 8,
+   "hash_functions": 6,
+   "inserted": 801,
+   "negatives": 1190,
+   "false_positives": 25,
+   "false_negatives": 0,
+   "fp_rate_experimental": 0.02100840336134454,
+   "fp_rate_theoretical": 0.021577141463219263
+  },
+  {
+   "bits_per_element": 12,
+   "hash_functions": 8,
+   "inserted": 801,
+   "negatives": 1190,
+   "false_positives": 8,
+   "false_negatives": 0,
+   "fp_rate_experimental": 0.0067226890756302525,
+   "fp_rate_theoretical": 0.003142350345702593
+  },
+  {
+   "bits_per_element": 16,
+   "hash_functions": 11,
+   "inserted": 801,
+   "negatives": 1190,
+   "false_positives": 0,
+   "false_negatives": 0,
+   "fp_rate_experimental": 0.0,
+   "fp_rate_theoretical": 0.0004587107308146284
+  }
+ ],
+ "hll_by_day": {
+  "days": 1,
+  "rows": [
+   {
+    "m": 16,
+    "memory_bits": 96,
+    "mean_rel_error": 0.17364505839190275,
+    "theoretical_error": 0.26
+   },
+   {
+    "m": 32,
+    "memory_bits": 192,
+    "mean_rel_error": 0.5521378380301207,
+    "theoretical_error": 0.18384776310850234
+   },
+   {
+    "m": 64,
+    "memory_bits": 384,
+    "mean_rel_error": 0.34278517201007275,
+    "theoretical_error": 0.13
+   },
+   {
+    "m": 128,
+    "memory_bits": 768,
+    "mean_rel_error": 0.1768212621577903,
+    "theoretical_error": 0.09192388155425117
+   }
+  ]
+ },
+ "reservoir_view_count": [
+  {
+   "sample_size": 100,
+   "mean_error_pct_over_trials": 15.573383105164881,
+   "categories": [
+    {
+     "category": "Ciencia",
+     "exact": 2510.6042296072505,
+     "estimated": 2610.1,
+     "error_pct": 3.963020902275549
+    },
+    {
+     "category": "Cocina",
+     "exact": 2574.82946518668,
+     "estimated": 2642.9285714285716,
+     "error_pct": 2.6448006426302992
+    },
+    {
+     "category": "Deportes",
+     "exact": 2510.6491897044802,
+     "estimated": 1956.125,
+     "error_pct": 22.086884618466005
+    },
+    {
+     "category": "Educacion",
+     "exact": 2462.005025125628,
+     "estimated": 2744.0,
+     "error_pct": 11.453874870136902
+    },
+    {
+     "category": "Entretenimiento",
+     "exact": 2533.6801210898084,
+     "estimated": 2218.181818181818,
+     "error_pct": 12.452175800798623
+    },
+    {
+     "category": "Musica",
+     "exact": 2484.667695473251,
+     "estimated": 2170.3333333333335,
+     "error_pct": 12.65096184542484
+    },
+    {
+     "category": "Noticias",
+     "exact": 2569.1495901639346,
+     "estimated": 2436.2,
+     "error_pct": 5.174848154927849
+    },
+    {
+     "category": "Salud",
+     "exact": 2477.3832335329344,
+     "estimated": 2787.5,
+     "error_pct": 12.517916577033416
+    },
+    {
+     "category": "Tecnologia",
+     "exact": 2544.317907444668,
+     "estimated": 1986.7142857142858,
+     "error_pct": 21.915642699319744
+    },
+    {
+     "category": "Videojuegos",
+     "exact": 2508.0,
+     "estimated": 1388.0,
+     "error_pct": 44.65709728867623
+    }
+   ]
+  },
+  {
+   "sample_size": 300,
+   "mean_error_pct_over_trials": 8.071610692107054,
+   "categories": [
+    {
+     "category": "Ciencia",
+     "exact": 2510.6042296072505,
+     "estimated": 2748.8285714285716,
+     "error_pct": 9.488725423623938
+    },
+    {
+     "category": "Cocina",
+     "exact": 2574.82946518668,
+     "estimated": 2852.153846153846,
+     "error_pct": 10.770592177725435
+    },
+    {
+     "category": "Deportes",
+     "exact": 2510.6491897044802,
+     "estimated": 2807.52,
+     "error_pct": 11.824464027587357
+    },
+    {
+     "category": "Educacion",
+     "exact": 2462.005025125628,
+     "estimated": 2311.848484848485,
+     "error_pct": 6.0989534442351925
+    },
+    {
+     "category": "Entretenimiento",
+     "exact": 2533.6801210898084,
+     "estimated": 2437.2702702702704,
+     "error_pct": 3.805131122000883
+    },
+    {
+     "category": "Musica",
+     "exact": 2484.667695473251,
+     "estimated": 2375.2727272727275,
+     "error_pct": 4.402800760835237
+    },
+    {
+     "category": "Noticias",
+     "exact": 2569.1495901639346,
+     "estimated": 2553.6285714285714,
+     "error_pct": 0.604130596162477
+    },
+    {
+     "category": "Salud",
+     "exact": 2477.3832335329344,
+     "estimated": 2036.0,
+     "error_pct": 17.816510080416133
+    },
+    {
+     "category": "Tecnologia",
+     "exact": 2544.317907444668,
+     "estimated": 2466.8928571428573,
+     "error_pct": 3.0430572404205125
+    },
+    {
+     "category": "Videojuegos",
+     "exact": 2508.0,
+     "estimated": 2721.0,
+     "error_pct": 8.492822966507177
+    }
+   ]
+  },
+  {
+   "sample_size": 500,
+   "mean_error_pct_over_trials": 6.511114295473404,
+   "categories": [
+    {
+     "category": "Ciencia",
+     "exact": 2510.6042296072505,
+     "estimated": 2284.2558139534885,
+     "error_pct": 9.01569482694495
+    },
+    {
+     "category": "Cocina",
+     "exact": 2574.82946518668,
+     "estimated": 2994.918367346939,
+     "error_pct": 16.315212632142288
+    },
+    {
+     "category": "Deportes",
+     "exact": 2510.6491897044802,
+     "estimated": 2783.804347826087,
+     "error_pct": 10.879861640636415
+    },
+    {
+     "category": "Educacion",
+     "exact": 2462.005025125628,
+     "estimated": 2456.9803921568628,
+     "error_pct": 0.20408703140274165
+    },
+    {
+     "category": "Entretenimiento",
+     "exact": 2533.6801210898084,
+     "estimated": 2857.4423076923076,
+     "error_pct": 12.778337087920942
+    },
+    {
+     "category": "Musica",
+     "exact": 2484.667695473251,
+     "estimated": 2291.6739130434785,
+     "error_pct": 7.767388080964822
+    },
+    {
+     "category": "Noticias",
+     "exact": 2569.1495901639346,
+     "estimated": 2496.1363636363635,
+     "error_pct": 2.8419219654279524
+    },
+    {
+     "category": "Salud",
+     "exact": 2477.3832335329344,
+     "estimated": 2184.0,
+     "error_pct": 11.842464644218483
+    },
+    {
+     "category": "Tecnologia",
+     "exact": 2544.317907444668,
+     "estimated": 2660.464285714286,
+     "error_pct": 4.564931840072885
+    },
+    {
+     "category": "Videojuegos",
+     "exact": 2508.0,
+     "estimated": 2701.714285714286,
+     "error_pct": 7.723855092276148
+    }
+   ]
+  }
+ ],
+ "pagerank": {
+  "meta": {
+   "damping": 0.85,
+   "iterations": 8,
+   "spearman_rank_correlation": 0.6217059141274922,
+   "pagerank_spread": 0.007481324597888264
+  },
+  "categories": [
+   {
+    "category": "Videojuegos",
+    "pagerank": 0.10481506184451711,
+    "upload_count": 1037,
+    "freq_share": 0.1037,
+    "pagerank_rank": 1,
+    "frequency_rank": 2,
+    "rank_delta": 1,
+    "pagerank_scaled": 99.99999999999999,
+    "frequency_scaled": 84.4155844155845,
+    "flagged_frac": 0.08333743961352656,
+    "flagged_scaled": 0.0,
+    "stationary": 0.10566671246049064
+   },
+   {
+    "category": "Deportes",
+    "pagerank": 0.103695520011404,
+    "upload_count": 1049,
+    "freq_share": 0.1049,
+    "pagerank_rank": 2,
+    "frequency_rank": 1,
+    "rank_delta": -1,
+    "pagerank_scaled": 85.03551318400062,
+    "frequency_scaled": 99.99999999999999,
+    "flagged_frac": 0.10106745005875442,
+    "flagged_scaled": 53.53197999291367,
+    "stationary": 0.10435370120976861
+   },
+   {
+    "category": "Entretenimiento",
+    "pagerank": 0.10048813072305422,
+    "upload_count": 991,
+    "freq_share": 0.0991,
+    "pagerank_rank": 3,
+    "frequency_rank": 7,
+    "rank_delta": 4,
+    "pagerank_scaled": 42.16356923365897,
+    "frequency_scaled": 24.675324675324667,
+    "flagged_frac": 0.11645784810126582,
+    "flagged_scaled": 100.0,
+    "stationary": 0.100572044383032
+   },
+   {
+    "category": "Ciencia",
+    "pagerank": 0.10033721610331699,
+    "upload_count": 993,
+    "freq_share": 0.0993,
+    "pagerank_rank": 4,
+    "frequency_rank": 6,
+    "rank_delta": 2,
+    "pagerank_scaled": 40.14635132307888,
+    "frequency_scaled": 27.272727272727337,
+    "flagged_frac": 0.09873537500000001,
+    "flagged_scaled": 46.49077740745126,
+    "stationary": 0.10039853831881881
+   },
+   {
+    "category": "Cocina",
+    "pagerank": 0.09990820211459778,
+    "upload_count": 991,
+    "freq_share": 0.0991,
+    "pagerank_rank": 5,
+    "frequency_rank": 7,
+    "rank_delta": 2,
+    "pagerank_scaled": 34.41188567991849,
+    "frequency_scaled": 24.675324675324667,
+    "flagged_frac": 0.10344712643678161,
+    "flagged_scaled": 60.716904595845776,
+    "stationary": 0.09989583274743705
+   },
+   {
+    "category": "Educacion",
+    "pagerank": 0.09877823617134349,
+    "upload_count": 995,
+    "freq_share": 0.0995,
+    "pagerank_rank": 6,
+    "frequency_rank": 4,
+    "rank_delta": -2,
+    "pagerank_scaled": 19.308063776866142,
+    "frequency_scaled": 29.87012987013001,
+    "flagged_frac": 0.10336513075965131,
+    "flagged_scaled": 60.469336160327686,
+    "stationary": 0.09855780902723815
+   },
+   {
+    "category": "Tecnologia",
+    "pagerank": 0.09851929233231434,
+    "upload_count": 994,
+    "freq_share": 0.0994,
+    "pagerank_rank": 7,
+    "frequency_rank": 5,
+    "rank_delta": -2,
+    "pagerank_scaled": 15.846860675182242,
+    "frequency_scaled": 28.571428571428676,
+    "flagged_frac": 0.10439333333333334,
+    "flagged_scaled": 63.57377424134546,
+    "stationary": 0.09824878609823288
+   },
+   {
+    "category": "Salud",
+    "pagerank": 0.09811489943140186,
+    "upload_count": 1002,
+    "freq_share": 0.1002,
+    "pagerank_rank": 8,
+    "frequency_rank": 3,
+    "rank_delta": -5,
+    "pagerank_scaled": 10.441495681039092,
+    "frequency_scaled": 38.961038961039,
+    "flagged_frac": 0.11567164179104478,
+    "flagged_scaled": 97.62621795406876,
+    "stationary": 0.09779216020504448
+   },
+   {
+    "category": "Musica",
+    "pagerank": 0.09800970402142148,
+    "upload_count": 972,
+    "freq_share": 0.0972,
+    "pagerank_rank": 9,
+    "frequency_rank": 10,
+    "rank_delta": 1,
+    "pagerank_scaled": 9.035388933444171,
+    "frequency_scaled": 0.0,
+    "flagged_frac": 0.09497981530343007,
+    "flagged_scaled": 35.151666967553744,
+    "stationary": 0.09765778862081351
+   },
+   {
+    "category": "Noticias",
+    "pagerank": 0.09733373724662885,
+    "upload_count": 976,
+    "freq_share": 0.0976,
+    "pagerank_rank": 10,
+    "frequency_rank": 9,
+    "rank_delta": -1,
+    "pagerank_scaled": 0.0,
+    "frequency_scaled": 5.194805194805345,
+    "flagged_frac": 0.09411781681304895,
+    "flagged_scaled": 32.54904662034331,
+    "stationary": 0.09685662692912407
+   }
+  ]
+ },
+ "markov": {
+  "classification": {
+   "num_classes": 1,
+   "classes": [
+    {
+     "states": [
+      "Ciencia",
+      "Cocina",
+      "Deportes",
+      "Educacion",
+      "Entretenimiento",
+      "Musica",
+      "Noticias",
+      "Salud",
+      "Tecnologia",
+      "Videojuegos"
+     ],
+     "closed": true
+    }
+   ],
+   "absorbing_states": [],
+   "has_absorbing_sink": false,
+   "irreducible": true,
+   "period": 1,
+   "aperiodic": true
+  },
+  "stationary": {
+   "iterations": 9,
+   "residual": 6.38378239159465e-16,
+   "top_category": "Videojuegos",
+   "top_value": 0.10566671246049064,
+   "raw_frequency_top": "Deportes"
+  },
+  "lazy_walk": {
+   "steps": 50000,
+   "seed": 42,
+   "max_abs_error": 0.004183373070875934,
+   "total_variation": 0.0058067098421741015,
+   "categories": [
+    {
+     "category": "Ciencia",
+     "pi": 0.10039853831881881,
+     "empirical": 0.1
+    },
+    {
+     "category": "Cocina",
+     "pi": 0.09989583274743705,
+     "empirical": 0.10032
+    },
+    {
+     "category": "Deportes",
+     "pi": 0.10435370120976861,
+     "empirical": 0.10398
+    },
+    {
+     "category": "Educacion",
+     "pi": 0.09855780902723815,
+     "empirical": 0.09594
+    },
+    {
+     "category": "Entretenimiento",
+     "pi": 0.100572044383032,
+     "empirical": 0.10146
+    },
+    {
+     "category": "Musica",
+     "pi": 0.09765778862081351,
+     "empirical": 0.09604
+    },
+    {
+     "category": "Noticias",
+     "pi": 0.09685662692912407,
+     "empirical": 0.10104
+    },
+    {
+     "category": "Salud",
+     "pi": 0.09779216020504448,
+     "empirical": 0.09722
+    },
+    {
+     "category": "Tecnologia",
+     "pi": 0.09824878609823288,
+     "empirical": 0.09856
+    },
+    {
+     "category": "Videojuegos",
+     "pi": 0.10566671246049064,
+     "empirical": 0.10544
+    }
+   ]
+  },
+  "two_sat": {
+   "variables": 8,
+   "constraints": 5,
+   "risk_categories": [
+    "Entretenimiento",
+    "Salud",
+    "Deportes",
+    "Cocina"
+   ],
+   "risk_score": {
+    "Entretenimiento": 0.011712403867992905,
+    "Salud": 0.01131177972521037,
+    "Deportes": 0.01054676248546447,
+    "Cocina": 0.010333936840731708
+   },
+   "found": true,
+   "attempts": 1,
+   "flips": 1,
+   "assignment": {
+    "R_Entretenimiento": false,
+    "T_Entretenimiento": true,
+    "R_Salud": true,
+    "T_Salud": true,
+    "R_Deportes": true,
+    "T_Deportes": false,
+    "R_Cocina": false,
+    "T_Cocina": true
+   },
+   "checks": [
+    {
+     "clause": "R_Entretenimiento OR T_Entretenimiento",
+     "satisfied": true
+    },
+    {
+     "clause": "R_Salud OR T_Salud",
+     "satisfied": true
+    },
+    {
+     "clause": "R_Deportes OR T_Deportes",
+     "satisfied": true
+    },
+    {
+     "clause": "R_Cocina OR T_Cocina",
+     "satisfied": true
+    },
+    {
+     "clause": "NOT R_Entretenimiento OR NOT R_Salud",
+     "satisfied": true
+    }
+   ]
+  }
+ }
+}

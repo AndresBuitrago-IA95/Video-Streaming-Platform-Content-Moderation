@@ -64,24 +64,34 @@ def app(environ, start_response):
         ("Access-Control-Allow-Headers", "Content-Type"),
     ]
 
+    print(f"[API] {method} {path}", flush=True)
+
     if method == "OPTIONS":
         start_response("204 No Content", headers)
         return [b""]
 
-    if path in ("/", "/health"):
+    if path in ("/", "/health") or path.endswith("/health"):
         data = json.dumps({"status": "ok", "service": "content-moderation-api"}).encode("utf-8")
         headers.extend([("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(data)))])
         start_response("200 OK", headers)
         return [] if method == "HEAD" else [data]
 
-    if path in ("/api/dashboard", "/dashboard", "/api"):
-        qs = parse_qs(environ.get("QUERY_STRING", ""))
-        pos = int(qs["pos"][0]) if "pos" in qs else None
-        data = json.dumps(dash_instance.payload(pos), ensure_ascii=False).encode("utf-8")
-        headers.extend([("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(data)))])
-        start_response("200 OK", headers)
-        return [] if method == "HEAD" else [data]
+    if path in ("/api/dashboard", "/dashboard", "/api") or path.endswith("/dashboard"):
+        try:
+            qs = parse_qs(environ.get("QUERY_STRING", ""))
+            pos = int(qs["pos"][0]) if "pos" in qs else None
+            data = json.dumps(dash_instance.payload(pos), ensure_ascii=False).encode("utf-8")
+            headers.extend([("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(data)))])
+            start_response("200 OK", headers)
+            return [] if method == "HEAD" else [data]
+        except Exception as e:
+            print(f"[API ERROR] {e}", flush=True)
+            import traceback
+            traceback.print_exc()
+            start_response("500 Internal Server Error", [("Content-Type", "text/plain")])
+            return [f"Internal Error: {e}".encode("utf-8")]
 
+    print(f"[API 404] Path not matched: {path}", flush=True)
     start_response("404 Not Found", [("Content-Type", "text/plain")])
     return [b"Not Found"]
 

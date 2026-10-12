@@ -27,12 +27,13 @@
 !/frontend/next.config.ts
 !/frontend/eslint.config.mjs
 
+!/backend/static_results.json
+
 # Ignorar artefactos generados y dependencias
 __pycache__/
 *.pyc
 node_modules/
 .next/
-backend/static_results.json
 backend/__pycache__/
 backend/algorithms/__pycache__/
 frontend/.next/
