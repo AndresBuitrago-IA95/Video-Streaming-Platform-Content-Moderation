@@ -55,12 +55,12 @@ dash_instance = Dashboard(refresh=False)
 
 def app(environ, start_response):
     """Aplicación WSGI estándar compatible con Gunicorn / uWSGI / Render."""
-    method = environ.get("REQUEST_METHOD", "GET")
-    path = environ.get("PATH_INFO", "/")
+    method = environ.get("REQUEST_METHOD", "GET").upper()
+    path = environ.get("PATH_INFO", "/").rstrip("/") or "/"
 
     headers = [
         ("Access-Control-Allow-Origin", "*"),
-        ("Access-Control-Allow-Methods", "GET, OPTIONS"),
+        ("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS"),
         ("Access-Control-Allow-Headers", "Content-Type"),
     ]
 
@@ -72,15 +72,15 @@ def app(environ, start_response):
         data = json.dumps({"status": "ok", "service": "content-moderation-api"}).encode("utf-8")
         headers.extend([("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(data)))])
         start_response("200 OK", headers)
-        return [data]
+        return [] if method == "HEAD" else [data]
 
-    if path == "/api/dashboard":
+    if path in ("/api/dashboard", "/dashboard", "/api"):
         qs = parse_qs(environ.get("QUERY_STRING", ""))
         pos = int(qs["pos"][0]) if "pos" in qs else None
         data = json.dumps(dash_instance.payload(pos), ensure_ascii=False).encode("utf-8")
         headers.extend([("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(data)))])
         start_response("200 OK", headers)
-        return [data]
+        return [] if method == "HEAD" else [data]
 
     start_response("404 Not Found", [("Content-Type", "text/plain")])
     return [b"Not Found"]
