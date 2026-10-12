@@ -18,14 +18,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-# --------------------------------------------------------------------------- #
-# Rutas a los datos de los compañeros (Arley / Juan Camilo)
-# --------------------------------------------------------------------------- #
-WORKSPACE = Path(__file__).resolve().parents[2]
-VIDEOS_W1 = WORKSPACE / "Equipo_4_logica_3" / "videos_equipo4.json"
-STREAM_W1 = WORKSPACE / "Equipo_4_logica_3" / "videos_stream_equipo4.jsonl"
-VIDEOS_W2 = WORKSPACE / "Equipo_4_logica_3_w2" / "videos_workshop2_equipo4.json"
-TRANSITIONS_W3 = WORKSPACE / "Equipo_4_logica_3_w3" / "transiciones_workshop3_equipo4.json"
+from config import TRANSITIONS_W3, VIDEOS_W1, VIDEOS_W2  # noqa: E402  (datos dentro del repo)
 
 
 # --------------------------------------------------------------------------- #

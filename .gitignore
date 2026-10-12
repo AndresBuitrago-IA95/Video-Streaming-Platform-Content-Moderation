@@ -1,42 +1,39 @@
-# Ignorar todo por defecto; solo se versiona lo necesario para ejecutar el dashboard
+# Ignorar todo por defecto; whitelist de la estructura unificada limpia
 /*
 !/.gitignore
 !/README.md
 !/requirements.txt
-!/Dashboard_Integrado/
+!/INFORME_INTEGRADO_WORKSHOPS_1_2_3.md
 
-# Datos y resultados que consume Dashboard_Integrado/analytics
-!/Equipo_4_logica_3/
-/Equipo_4_logica_3/*
-!/Equipo_4_logica_3/videos_equipo4.json
-!/Equipo_4_logica_3/videos_stream_equipo4.jsonl
+# Backend unificado
+!/backend/
+/backend/*
+!/backend/algorithms/
+/backend/algorithms/*
+!/backend/algorithms/*.py
+!/backend/*.py
+!/backend/data/
+/backend/data/*
+!/backend/data/*.json
 
-!/Equipo_4_logica_3_w2/
-/Equipo_4_logica_3_w2/*
-!/Equipo_4_logica_3_w2/videos_workshop2_equipo4.json
-!/Equipo_4_logica_3_w2/resultados_reservoir_equipo4.csv
+# Frontend Next.js
+!/frontend/
+/frontend/*
+!/frontend/src/
+!/frontend/public/
+!/frontend/package.json
+!/frontend/package-lock.json
+!/frontend/tsconfig.json
+!/frontend/next.config.ts
+!/frontend/eslint.config.mjs
 
-!/Equipo_4_logica_3_w3/
-/Equipo_4_logica_3_w3/*
-!/Equipo_4_logica_3_w3/transiciones_workshop3_equipo4.json
-
-!/Workshop1_Entrega_Final_Juan_Camilo/
-/Workshop1_Entrega_Final_Juan_Camilo/*
-!/Workshop1_Entrega_Final_Juan_Camilo/workshop1_juan_camilo.py
-!/Workshop1_Entrega_Final_Juan_Camilo/resultados/
-/Workshop1_Entrega_Final_Juan_Camilo/resultados/*
-!/Workshop1_Entrega_Final_Juan_Camilo/resultados/hashing_comparacion.csv
-!/Workshop1_Entrega_Final_Juan_Camilo/resultados/quicksort_comparacion.csv
-
-!/Workshop2_Entrega_Final_Juan_Camilo/
-/Workshop2_Entrega_Final_Juan_Camilo/*
-!/Workshop2_Entrega_Final_Juan_Camilo/resultados/
-/Workshop2_Entrega_Final_Juan_Camilo/resultados/*
-!/Workshop2_Entrega_Final_Juan_Camilo/resultados/bloom_comparacion.csv
-
-# Artefactos generados
+# Ignorar artefactos generados y dependencias
 __pycache__/
 *.pyc
 node_modules/
 .next/
-Dashboard_Integrado/output/
+backend/static_results.json
+backend/__pycache__/
+backend/algorithms/__pycache__/
+frontend/.next/
+frontend/node_modules/
