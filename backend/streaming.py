@@ -46,8 +46,6 @@ class StreamEngine:
         self.uploaders = uploaders
         self.hash64 = {u: stable_hash(u) for u in set(uploaders)}
         self.day = self.df["upload_time"].dt.normalize().to_numpy()
-        self.total_flagged_uploaders = len({u for u, f in zip(uploaders, flagged) if f})
-
         # línea base para el z-score: todos los puntos de control de la serie
         self.checkpoints = list(range(WINDOW, self.n + 1, STEP))
         self._f2 = np.array([self._moments_at(p)[2] for p in self.checkpoints], float)
@@ -78,7 +76,7 @@ class StreamEngine:
         negatives = sorted(set(self.uploaders[:p]) - flagged_users)
         rows = []
         for bits in BLOOM_BITS:
-            bf = sized_filter(self.total_flagged_uploaders, bits)
+            bf = sized_filter(len(flagged_users), bits)
             for u in flagged_users:
                 bf.add(u)
             fp = sum(u in bf for u in negatives)
@@ -86,6 +84,7 @@ class StreamEngine:
                 "bits_per_element": bits, "hash_functions": bf.hashes,
                 "inserted": len(flagged_users), "negatives": len(negatives),
                 "false_positives": fp,
+                "false_negatives": sum(u not in bf for u in flagged_users),
                 "fp_rate_experimental": fp / len(negatives) if negatives else 0.0,
                 "fp_rate_theoretical": bf.theoretical_fp(),
             })

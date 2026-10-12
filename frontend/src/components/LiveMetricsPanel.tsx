@@ -29,13 +29,25 @@ export default function LiveMetricsPanel({ data, ticks }: Props) {
   const [tab, setTab] = useState<"stream" | "hll" | "reservoir">("stream");
   const [bloomBits, setBloomBits] = useState<number>(8);
 
-  const { live, bloom_final, hll_by_day, reservoir_view_count, chernoff } = data;
+  const { live, hll_by_day, reservoir_view_count, chernoff } = data;
   const moments = live.moments;
   const flagRates = live.rolling_flag_rate_by_category;
   const maxRate = Math.max(...flagRates.map((r) => r.flag_rate), 0.01);
+  const hllTodayRows = live.distinct_uploaders_today.estimates.map((estimate) => ({
+    memory_bits: estimate.memory_bits,
+    estimate: estimate.estimate,
+    true_count: live.distinct_uploaders_today.true_distinct,
+  }));
+  const hllBenchmarkRows = hll_by_day.rows.map((row) => ({
+    ...row,
+    mean_rel_error: row.mean_rel_error * 100,
+    theoretical_error: row.theoretical_error * 100,
+  }));
 
   const bloomRow =
-    bloom_final.find((b) => b.bits_per_element === bloomBits) ?? bloom_final[1] ?? bloom_final[0];
+    live.bloom_live.find((b) => b.bits_per_element === bloomBits) ??
+    live.bloom_live[1] ??
+    live.bloom_live[0];
 
   const windows = live.series.map((w) => ({
     ...w,
@@ -129,7 +141,7 @@ export default function LiveMetricsPanel({ data, ticks }: Props) {
           <div className="mb-3 rounded-xl border border-white/10 bg-white/[0.03] p-3">
             <div className="mb-2 flex items-center justify-between">
               <span className="text-[10px] font-medium uppercase tracking-wider text-slate-400">
-                Filtro de Bloom · Reincidencia de Uploaders Marcados (W2 T2)
+                Filtro de Bloom · Falsos positivos acumulados hasta la posición {live.position.toLocaleString()} (W2 T2)
               </span>
               <div className="flex gap-1">
                 {[4, 8, 12, 16].map((b) => (
@@ -146,22 +158,28 @@ export default function LiveMetricsPanel({ data, ticks }: Props) {
               </div>
             </div>
             <div className="flex items-end gap-6 text-xs">
-              <div>
-                <div className="font-mono text-xl font-bold text-cyan-300">
-                  {pct(bloomRow.fp_rate_experimental)}
-                </div>
-                <div className="text-[11px] text-slate-400">FP Experimental ({bloomRow.false_positives}/{bloomRow.negatives})</div>
-              </div>
-              <div>
-                <div className="font-mono text-xl font-bold text-violet-300">
-                  {pct(bloomRow.fp_rate_theoretical)}
-                </div>
-                <div className="text-[11px] text-slate-400">FP Teórica (k={bloomRow.hash_functions} hashes)</div>
-              </div>
-              <div className="ml-auto text-right text-[11px] text-slate-400">
-                Falsos Negativos
-                <div className="font-mono text-base font-bold text-emerald-400">{bloomRow.false_negatives ?? 0} (Garantía 0%)</div>
-              </div>
+              {bloomRow ? (
+                <>
+                  <div>
+                    <div className="font-mono text-xl font-bold text-cyan-300">
+                      {pct(bloomRow.fp_rate_experimental)}
+                    </div>
+                    <div className="text-[11px] text-slate-400">FP Experimental ({bloomRow.false_positives}/{bloomRow.negatives})</div>
+                  </div>
+                  <div>
+                    <div className="font-mono text-xl font-bold text-violet-300">
+                      {pct(bloomRow.fp_rate_theoretical)}
+                    </div>
+                    <div className="text-[11px] text-slate-400">FP Teórica (k={bloomRow.hash_functions} hashes)</div>
+                  </div>
+                  <div className="ml-auto text-right text-[11px] text-slate-400">
+                    Falsos Negativos
+                    <div className="font-mono text-base font-bold text-emerald-400">{bloomRow.false_negatives} (Garantía 0%)</div>
+                  </div>
+                </>
+              ) : (
+                <span className="text-xs text-slate-400">Aún no hay elementos para medir.</span>
+              )}
             </div>
           </div>
 
@@ -223,6 +241,45 @@ export default function LiveMetricsPanel({ data, ticks }: Props) {
                 hint={`Error: ${(est.rel_error * 100).toFixed(2)}% (Teór: ${(est.theoretical_error * 100).toFixed(1)}%)`}
               />
             ))}
+          </div>
+
+          <div className="grid gap-3 xl:grid-cols-2">
+            <div className="rounded-xl border border-white/10 bg-slate-950/40 p-3">
+              <h4 className="mb-2 text-xs font-semibold text-slate-200">
+                Estimación HLL vs. conteo exacto de uploaders de hoy
+              </h4>
+              <div className="h-56">
+                <ResponsiveContainer width="100%" height="100%">
+                  <ComposedChart data={hllTodayRows} margin={{ top: 8, right: 12, left: 4, bottom: 8 }}>
+                    <CartesianGrid stroke={COLORS.grid} vertical={false} />
+                    <XAxis dataKey="memory_bits" {...axisProps} tickFormatter={(v: number) => `${v} bits`} />
+                    <YAxis {...axisProps} allowDecimals={false} />
+                    <Tooltip content={<ChartTooltip labelPrefix="Memoria " format={(p) => Number(p.value).toLocaleString()} />} />
+                    <Legend wrapperStyle={{ fontSize: 11 }} />
+                    <Line type="monotone" dataKey="estimate" name="Estimación HLL" stroke={COLORS.pagerank} strokeWidth={2.5} dot={{ r: 3 }} isAnimationActive={false} />
+                    <Line type="monotone" dataKey="true_count" name="Conteo exacto" stroke={COLORS.frequency} strokeWidth={2} dot={false} isAnimationActive={false} />
+                  </ComposedChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-slate-950/40 p-3">
+              <h4 className="mb-2 text-xs font-semibold text-slate-200">
+                Error relativo vs. memoria (promedio por día)
+              </h4>
+              <div className="h-56">
+                <ResponsiveContainer width="100%" height="100%">
+                  <ComposedChart data={hllBenchmarkRows} margin={{ top: 8, right: 12, left: 4, bottom: 8 }}>
+                    <CartesianGrid stroke={COLORS.grid} vertical={false} />
+                    <XAxis dataKey="memory_bits" {...axisProps} tickFormatter={(v: number) => `${v} bits`} />
+                    <YAxis {...axisProps} tickFormatter={(v: number) => `${v}%`} />
+                    <Tooltip content={<ChartTooltip labelPrefix="Memoria " format={(p) => `${Number(p.value).toFixed(2)}%`} />} />
+                    <Legend wrapperStyle={{ fontSize: 11 }} />
+                    <Line type="monotone" dataKey="mean_rel_error" name="Error empírico" stroke={COLORS.randomized} strokeWidth={2.5} dot={{ r: 3 }} isAnimationActive={false} />
+                    <Line type="monotone" dataKey="theoretical_error" name="Error teórico" stroke={COLORS.chaining} strokeWidth={2} dot={{ r: 3 }} isAnimationActive={false} />
+                  </ComposedChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
           </div>
 
           <div className="rounded-xl border border-white/10 bg-slate-950/40 p-3">

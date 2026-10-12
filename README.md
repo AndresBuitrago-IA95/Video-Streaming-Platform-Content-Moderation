@@ -25,6 +25,7 @@ El repositorio cuenta con una **estructura unificada** y autosuficiente:
 │   ├── metrics_and_graphs.py           # Chernoff bounds, momentos Fk y PageRank
 │   ├── streaming.py                    # Motor de simulación de streaming continuo
 │   ├── static_results.py               # Generador y caché de benchmarks estáticos
+│   ├── generate_data.py                # Generador reproducible de datasets W1, W2 y W3
 │   └── aggregate_api.py                # Servidor HTTP / API REST unificada (puerto 8000)
 ├── frontend/                           # Aplicación Next.js 16 + React 19 + TypeScript + Tailwind v4
 │   ├── src/
@@ -33,6 +34,7 @@ El repositorio cuenta con una **estructura unificada** y autosuficiente:
 │   │   └── lib/                        # Tipos e hook useDashboard (polling en vivo)
 │   └── package.json
 ├── INFORME_INTEGRADO_WORKSHOPS_1_2_3.md # Informe técnico consolidado (requisito de entrega)
+├── screenshots/                         # Evidencia visual del dashboard para el informe
 ├── requirements.txt                    # Dependencias Python (pandas, numpy)
 └── README.md
 ```
@@ -73,10 +75,14 @@ El repositorio cuenta con una **estructura unificada** y autosuficiente:
 # 1. Instalar dependencias Python
 pip install -r requirements.txt
 
-# 2. Iniciar el servidor API (puerto 8000)
+# 2. (Opcional) Regenerar los tres datasets con semilla reproducible
+# Por seguridad, usa otra carpeta si no quieres sobrescribir los datos actuales.
+py backend/generate_data.py --seed 42 --output-dir backend/data/generated
+
+# 3. Iniciar el servidor API (puerto 8000)
 py backend/aggregate_api.py --serve 8000
 ```
-> *Nota:* Al iniciar por primera vez, el backend genera y cachea automáticamente los resultados de los benchmarks estáticos en `backend/static_results.json`. Para forzar un recálculo use el flag `--refresh`.
+> *Nota:* Para reemplazar los datasets activos, genera en `backend/data` (haz una copia de seguridad primero) y recalcula `backend/static_results.json` con `py backend/aggregate_api.py --refresh` antes de iniciar el backend. El backend carga y cachea los resultados estáticos al arrancar.
 
 ### Paso 2: Iniciar el Frontend
 En una segunda terminal:
@@ -92,6 +98,21 @@ npm run dev
 ```
 
 Abra su navegador en: **`http://localhost:3000`**
+
+### Despliegue
+
+**Render (backend):**
+* Root Directory: raíz del repositorio.
+* Build Command: `pip install -r requirements.txt`
+* Start Command: `gunicorn backend.aggregate_api:app --bind 0.0.0.0:$PORT`
+* Health Check Path: `/health`
+
+**Vercel (frontend):**
+* Importa el mismo repositorio y establece **Root Directory** en `frontend`.
+* Define `NEXT_PUBLIC_API_URL` como `https://<tu-servicio>.onrender.com/api/dashboard`.
+* Si cambias esta variable, vuelve a desplegar para que Next.js la incluya en el build.
+
+El panel de W2 permite alternar entre stream/Fk, HyperLogLog y reservoir sampling. La vista HLL compara gráficamente la estimación con el conteo exacto y el error frente a memoria. La medición del filtro de Bloom se calcula con los eventos consumidos hasta la posición actual del stream.
 
 ---
 

@@ -4,6 +4,8 @@
 !/README.md
 !/requirements.txt
 !/INFORME_INTEGRADO_WORKSHOPS_1_2_3.md
+!/screenshots/
+!/screenshots/*.png
 
 # Backend unificado
 !/backend/
