@@ -32,6 +32,8 @@ class Dashboard:
 
     def payload(self, pos: int | None = None) -> dict:
         s, live = self.static, self.engine.snapshot(pos)
+        w4 = s["workshop4"]
+        w5 = s["workshop5"]
         return {
             "meta": {**s["meta"], "generated_at": datetime.now(timezone.utc).isoformat()},
             "capacity": s["capacity"],
@@ -46,11 +48,47 @@ class Dashboard:
                 "moments_overall": s["moments_overall"],
             },
             "panel_d_pagerank": {**s["pagerank"], "markov": s["markov"]},
+            "panel_e_mapreduce": {
+                "pipeline_validation": w4["pipeline_validation"],
+                "s10_pagerank_mr": w4["s10_pagerank_mr"],
+                "cost_analysis": w4["cost_analysis"],
+                "reducer_analysis": w4["reducer_analysis"],
+                "s14_skew_mitigation": w4["s14_skew_mitigation"],
+            },
+            "panel_f_category_flow": {
+                "node_summary_100k": w4["node_summary_100k"],
+                "node_summary_unit3": w4["node_summary_unit3"],
+                "mean_flagged_frac": w4["mean_flagged_frac"],
+                "unit3_edge_validation": w4["pipeline_validation"]["unit3_edge_validation"],
+                "s10_pagerank_mr": w4["s10_pagerank_mr"],
+            },
+            "panel_g_neighbors": {
+                "meta": w5["meta"],
+                "task1_representations": w5["task1_representations"],
+                "task2_hyperplanes": w5["task2_hyperplanes"],
+                "task3_k_shingles": w5["task3_k_shingles"],
+                "queries_count": w5["task5_neighbors_outcome"]["queries_count"],
+                "mean_overlap_at_5": w5["task5_neighbors_outcome"]["mean_overlap_at_5"],
+                "disagreement_explanation": w5["task5_neighbors_outcome"]["disagreement_explanation"],
+                "queries": w5["task5_neighbors_outcome"]["queries"],
+            },
+            "panel_h_threshold_outcome": {
+                "meta": w5["meta"],
+                "threshold_lsh": w5["task4_threshold_lsh"],
+                "outcome_test": w5["task5_neighbors_outcome"]["outcome_test"],
+            },
         }
 
 
-# Instancia singleton para WSGI / Standalone
-dash_instance = Dashboard(refresh=False)
+# Instancia singleton perezosa para WSGI / Standalone (evita recálculo en workers Windows)
+_dash_singleton: Dashboard | None = None
+
+
+def get_dashboard(refresh: bool = False, rate_eps: float = 25.0) -> Dashboard:
+    global _dash_singleton
+    if refresh or _dash_singleton is None:
+        _dash_singleton = Dashboard(refresh=refresh, rate_eps=rate_eps)
+    return _dash_singleton
 
 
 def app(environ, start_response):
@@ -80,7 +118,7 @@ def app(environ, start_response):
         try:
             qs = parse_qs(environ.get("QUERY_STRING", ""))
             pos = int(qs["pos"][0]) if "pos" in qs else None
-            data = json.dumps(dash_instance.payload(pos), ensure_ascii=False).encode("utf-8")
+            data = json.dumps(get_dashboard().payload(pos), ensure_ascii=False).encode("utf-8")
             headers.extend([("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(data)))])
             start_response("200 OK", headers)
             return [] if method == "HEAD" else [data]
@@ -148,9 +186,7 @@ def main() -> None:
     ap.add_argument("--rate", type=float, default=25.0, help="eventos/s simulados del stream")
     args = ap.parse_args()
 
-    dash = dash_instance
-    if args.refresh:
-        dash = Dashboard(refresh=True, rate_eps=args.rate)
+    dash = get_dashboard(refresh=args.refresh, rate_eps=args.rate)
 
     port = args.serve or (int(os.environ["PORT"]) if "PORT" in os.environ else None)
     if port:

@@ -1,6 +1,6 @@
 # Video Streaming Platform – Content Moderation
 > **Lógica III (2026-2) · Equipo 4**  
-> Integración de Algoritmos Probabilísticos, Streaming y Análisis de Grafos (Workshops 1, 2 y 3).
+> Integración de Algoritmos Probabilísticos, Streaming, Análisis de Grafos, MapReduce Paralelo y Búsqueda de Similitud / LSH (Workshops 1, 2, 3, 4 y 5).
 
 ---
 
@@ -10,32 +10,40 @@ El repositorio cuenta con una **estructura unificada** y autosuficiente:
 
 ```text
 ├── backend/
-│   ├── data/                           # Datasets originales (W1, W2 y transiciones W3)
+│   ├── data/                           # Datasets originales y generados (W1, W2, W3, W4, W5)
 │   │   ├── videos_equipo4.json
 │   │   ├── videos_workshop2_equipo4.json
-│   │   └── transiciones_workshop3_equipo4.json
-│   ├── algorithms/                     # Módulos de algoritmos probabilísticos
-│   │   ├── hashing.py                  # Universal sharding & Power of Two Choices
-│   │   ├── quicksort.py                # QuickSort determinista vs aleatorizado
-│   │   ├── bloom.py                    # Bloom filter con doble hashing Kirsch-Mitzenmacher
-│   │   ├── hyperloglog.py              # HyperLogLog con corrección de rango
-│   │   ├── reservoir.py                # Reservoir Sampling (Algoritmo R)
-│   │   └── markov.py                   # DTMC, Lazy Walk & Papadimitriou 2-SAT
+│   │   ├── transiciones_workshop3_equipo4.json
+│   │   ├── fragments_w4/               # >=8 archivos fragmento JSONL para Map paralelo (W4)
+│   │   ├── transiciones_mapreduce_workshop4_equipo4.json
+│   │   ├── node_summary_workshop4_equipo4.json
+│   │   └── uploaders_workshop5_equipo4.json
+│   ├── algorithms/                     # Módulos algorítmicos
+│   │   ├── hashing.py                  # Universal sharding & Power of Two Choices (W1)
+│   │   ├── quicksort.py                # QuickSort determinista vs aleatorizado (W1)
+│   │   ├── bloom.py                    # Bloom filter con doble hashing Kirsch-Mitzenmacher (W2)
+│   │   ├── hyperloglog.py              # HyperLogLog con corrección de rango (W2)
+│   │   ├── reservoir.py                # Reservoir Sampling (Algoritmo R) (W2)
+│   │   ├── markov.py                   # DTMC, Lazy Walk & Papadimitriou 2-SAT (W3)
+│   │   ├── mapreduce.py                # Runner MapReduce paralelo, S10 PageRank, costos, R-sweep y S14 skew (W4)
+│   │   └── similarity.py               # k-Shingles (S21), MinHash/LSH (S25), Hiperplanos, LCS & Outcome Test (W5)
 │   ├── config.py                       # Configuración de rutas
 │   ├── metrics_and_graphs.py           # Chernoff bounds, momentos Fk y PageRank
 │   ├── streaming.py                    # Motor de simulación de streaming continuo
-│   ├── static_results.py               # Generador y caché de benchmarks estáticos
+│   ├── static_results.py               # Generador y caché de benchmarks estáticos (W1–W5)
 │   ├── generate_data.py                # Generador reproducible de datasets W1, W2 y W3
 │   └── aggregate_api.py                # Servidor HTTP / API REST unificada (puerto 8000)
 ├── frontend/                           # Aplicación Next.js 16 + React 19 + TypeScript + Tailwind v4
 │   ├── src/
 │   │   ├── app/                        # App Router (page.tsx, layout.tsx, globals.css)
-│   │   ├── components/                 # Paneles Recharts (A, B, C, D y UI compartido)
+│   │   ├── components/                 # Paneles Recharts (A–D, E–F de W4, G–H de W5 y UI compartido)
 │   │   └── lib/                        # Tipos e hook useDashboard (polling en vivo)
 │   └── package.json
-├── INFORME_INTEGRADO_WORKSHOPS_1_2_3.md # Informe técnico consolidado (requisito de entrega)
-├── screenshots/                         # Evidencia visual del dashboard para el informe
-├── requirements.txt                    # Dependencias Python (pandas, numpy)
+├── INFORME_INTEGRADO_WORKSHOPS_1_2_3.md # Informe técnico consolidado W1–W3
+├── GUIA_WORKSHOPS_4_5_Y_DASHBOARD.md    # Explicación detallada de W4, W5 y funcionamiento completo del dashboard
+├── GUION_PRESENTACION_WORKSHOPS.md      # Guion de presentación
+├── screenshots/                         # Evidencia visual del dashboard
+├── requirements.txt                    # Dependencias Python (pandas, numpy, gunicorn)
 └── README.md
 ```
 
@@ -61,6 +69,18 @@ El repositorio cuenta con una **estructura unificada** y autosuficiente:
 | **W3** | **Task 4: Lazy Random Walk** | Caminata aleatoria floja con auto-bucle de $1/2$ ($50\,000$ pasos); validación de convergencia empírica hacia $\pi$. | `backend/algorithms/markov.py` & **Panel D** |
 | **W3** | **Task 5: Randomized 2-SAT** | Algoritmo de Papadimitriou para resolver 5 políticas de moderación sobre variables booleanas de categorías en riesgo. | `backend/algorithms/markov.py` & **Panel D** |
 | **W3** | **Task 6: Dashboard** | Panel A (Hashing/Sharding), Panel B (Runtimes), Panel C (Stream & Fk), Panel D (PageRank con `flagged_frac` overlay). | `frontend/src/` |
+| **W4** | **Task 1: MapReduce Pipeline** | Job 1 (transiciones por uploader desde ≥8 fragmentos con ≥2 workers) y Job 2 (Node Summary: `out`, `in`, `net_flow`, `flagged_frac`, `avg_view_count_1h`), validado contra Unidad 3. | `backend/algorithms/mapreduce.py` & **Panel F** |
+| **W4** | **Task 2: S10 PageRank MR** | Multiplicación iterativa matriz-vector en MapReduce (`Map: (j, p(i,j)*v_i)`, `Reduce: sum`) comparada contra Unidad 3 dentro de `1e-4`. | `backend/algorithms/mapreduce.py` & **Panel F** |
+| **W4** | **Task 3: Cost Analysis** | Shuffle con/sin combiner a 1x (100k), 2x (200k) y 4x (400k), chequeo lineal ($R^2$), extrapolación a 10x (1M) y costo S10 (pares/iter × iteraciones). | `backend/algorithms/mapreduce.py` & **Panel E** |
+| **W4** | **Task 4: Reducer Size & Replication** | Hot key (`uploader_id` más activo), reporte de $(r, q)$ por job y barrido de Job 1 con $R \in \{1, 2, 4, 8\}$ reducers. | `backend/algorithms/mapreduce.py` & **Panel E** |
+| **W4** | **Task 5: S14 Skew & Mitigation** | Ola de spam (≥40% en una categoría), speedup/eficiencia/LBF para $P \in \{1, 2, 4, 8\}$ y mitigación con Salting + Combiner. | `backend/algorithms/mapreduce.py` & **Panel E** |
+| **W4** | **Task 6: Dashboard (E–F)** | **Panel E** (Speedup/Eficiencia vs workers y Shuffle con/sin combiner) y **Panel F** (Categorías por `flagged_frac` y `net_flow`). | `frontend/src/components/MapReducePanel.tsx`, `CategoryFlowPanel.tsx` |
+| **W5** | **Task 1: Representations & Distances** | Conjuntos ($k=3$ shingles) y vectores (shares + 2 métricas z-scored sin `flagged_frac`) para 1 000 uploaders; distribuciones en 5 000 pares; correlación Jaccard/Cosine/LCS en 500 pares; concentración de distancias. | `backend/algorithms/similarity.py` & **Panel G** |
+| **W5** | **Task 2: Random Hyperplanes** | Firmas de hiperplanos aleatorios ($n \in \{16, 32, 64, 128\}$), verificación Charikar ($1-\theta/180$) en 1 000 pares, Cosine LSH banding y `recall@5` en 50 queries. | `backend/algorithms/similarity.py` & **Panel G** |
+| **W5** | **Task 3: S21 k-Shingles** | Comparación $k \in \{2, 3, 4\}$: tamaño medio, posibles vs observados, separación Jaccard intra-cluster vs inter-cluster y selección del mejor $k$. | `backend/algorithms/similarity.py` & **Panel G** |
+| **W5** | **Task 4: S25 Threshold Design** | MinHash $n=100$ sobre el runner MapReduce de Unidad 4 con bandas en Reduce; diseño $(b=20, r=5)$ para $s \ge 0.6$ y $\text{FNR}(0.8) \le 1\%$; precisión/recall vs fuerza bruta (~500 000 pares). | `backend/algorithms/similarity.py` & **Panel H** |
+| **W5** | **Task 5: Top-5 Neighbors & Outcome Test** | Top-5 vecinos en ≥20 consultas por MinHash/LSH, Cosine LSH y LCS (solo candidatos); `overlap@5` y prueba de resultado sobre `flagged_frac` vs 5 uploaders aleatorios. | `backend/algorithms/similarity.py` & **Paneles G–H** |
+| **W5** | **Task 6: Dashboard (G–H)** | **Panel G** (selector de uploader con Top-5 vecinos por método, candidatos y `flagged_frac`) y **Panel H** (diseño de umbral S25 P/R y Outcome Test). | `frontend/src/components/SimilarityNeighborsPanel.tsx`, `LshThresholdOutcomePanel.tsx` |
 
 ---
 
@@ -120,3 +140,5 @@ El panel de W2 permite alternar entre stream/Fk, HyperLogLog y reservoir samplin
 
 * **`GET /api/dashboard`**: Devuelve la carga consolidada con el estado actual del streaming (avanza en tiempo real a una tasa simulada de 25 eventos/segundo).
 * **`GET /api/dashboard?pos=N`**: Permite fijar el cursor de lectura del stream en un evento específico para propósitos de auditoría o pruebas.
+
+El [guion de exposición](GUION_PRESENTACION_WORKSHOPS.md) distribuye el contenido y la demostración entre Arley, Juan Camilo y Andrés, con cinco minutos de margen para preguntas.

@@ -1,0 +1,82 @@
+[
+  {
+    "category": "Ciencia",
+    "out_transition_count": 9418,
+    "in_transition_count": 9437,
+    "net_flow": 19,
+    "flagged_frac": 0.0976,
+    "avg_view_count_1h": 1949.86
+  },
+  {
+    "category": "Cocina",
+    "out_transition_count": 9480,
+    "in_transition_count": 9490,
+    "net_flow": 10,
+    "flagged_frac": 0.0965,
+    "avg_view_count_1h": 1949.33
+  },
+  {
+    "category": "Deportes",
+    "out_transition_count": 9530,
+    "in_transition_count": 9480,
+    "net_flow": -50,
+    "flagged_frac": 0.1082,
+    "avg_view_count_1h": 1973.76
+  },
+  {
+    "category": "Educacion",
+    "out_transition_count": 9351,
+    "in_transition_count": 9323,
+    "net_flow": -28,
+    "flagged_frac": 0.0827,
+    "avg_view_count_1h": 1989.21
+  },
+  {
+    "category": "Entretenimiento",
+    "out_transition_count": 9495,
+    "in_transition_count": 9476,
+    "net_flow": -19,
+    "flagged_frac": 0.1258,
+    "avg_view_count_1h": 1966.47
+  },
+  {
+    "category": "Musica",
+    "out_transition_count": 9555,
+    "in_transition_count": 9604,
+    "net_flow": 49,
+    "flagged_frac": 0.0863,
+    "avg_view_count_1h": 1916.0
+  },
+  {
+    "category": "Noticias",
+    "out_transition_count": 9614,
+    "in_transition_count": 9644,
+    "net_flow": 30,
+    "flagged_frac": 0.1282,
+    "avg_view_count_1h": 1955.47
+  },
+  {
+    "category": "Salud",
+    "out_transition_count": 9621,
+    "in_transition_count": 9633,
+    "net_flow": 12,
+    "flagged_frac": 0.1128,
+    "avg_view_count_1h": 1967.93
+  },
+  {
+    "category": "Tecnologia",
+    "out_transition_count": 9377,
+    "in_transition_count": 9367,
+    "net_flow": -10,
+    "flagged_frac": 0.1027,
+    "avg_view_count_1h": 1941.69
+  },
+  {
+    "category": "Videojuegos",
+    "out_transition_count": 9559,
+    "in_transition_count": 9546,
+    "net_flow": -13,
+    "flagged_frac": 0.1073,
+    "avg_view_count_1h": 2007.63
+  }
+]

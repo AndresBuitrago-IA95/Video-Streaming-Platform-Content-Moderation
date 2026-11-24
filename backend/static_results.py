@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 
 import metrics_and_graphs as mg
-from algorithms import hashing, markov, quicksort, reservoir
+from algorithms import hashing, mapreduce, markov, quicksort, reservoir, similarity
 from algorithms.bloom import sized_filter
 from algorithms.hyperloglog import HyperLogLog
 from config import STATIC_CACHE, VIDEOS_W1
@@ -153,6 +153,15 @@ def build_static() -> dict:
     view_records = list(zip(stream["category"], stream["view_count_1h"].astype(float)))
 
     mk = _markov_panel(videos, edges)
+    u3_pr_map = {
+        row["category"]: float(row["pagerank"])
+        for row in mk["pagerank"].to_dict("records")
+    }
+    print("  [W4] Ejecutando pipeline MapReduce (Job 1, Job 2, S10, Costos, R-sweep, S14)…", flush=True)
+    w4 = mapreduce.run_workshop4(stream, edges, u3_pr_map)
+    print("  [W5] Ejecutando Shingling, MinHash/LSH en MapReduce, Hiperplanos y Outcome Test…", flush=True)
+    w5 = similarity.run_workshop5(edges, seed=42)
+
     return {
         "meta": {"videos": int(len(videos)), "categories": int(videos["category"].nunique())},
         "capacity": _capacity(videos),
@@ -168,6 +177,8 @@ def build_static() -> dict:
         "reservoir_view_count": reservoir.compare_sizes(view_records),
         "pagerank": {"meta": mk["pagerank_meta"], "categories": mk["pagerank"].to_dict("records")},
         "markov": {k: mk[k] for k in ("classification", "stationary", "lazy_walk", "two_sat")},
+        "workshop4": w4,
+        "workshop5": w5,
     }
 
 
